@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AquaWatt — Water Analytics Demo</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #0B1520; color: #DCE7F0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding-bottom: 40px;
+  }
+  .mono { font-family: 'SF Mono', 'Courier New', monospace; }
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; border-bottom: 1px solid #1D2F42; flex-wrap: wrap; gap: 10px;
+  }
+  .logo { font-size: 26px; font-weight: 700; letter-spacing: 0.03em; }
+  .logo span { color: #4FC3E8; }
+  .sub { font-size: 12px; color: #7C93A6; }
+  .live { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+  .dot { width: 8px; height: 8px; border-radius: 4px; background: #5CC98F; display: inline-block; }
+  main { max-width: 1180px; margin: 0 auto; padding: 20px 16px; display: grid; gap: 16px; }
+  .panel { background: #121F2E; border: 1px solid #1D2F42; border-radius: 10px; padding: 16px 18px; }
+  .panel-title {
+    display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;
+  }
+  .panel-title h2 {
+    font-size: 15px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .panel-title .tag { font-size: 11px; color: #7C93A6; }
+  .hero {
+    display: flex; flex-wrap: wrap; gap: 28px; align-items: center; justify-content: space-between;
+  }
+  .hero-label { font-size: 11px; color: #7C93A6; letter-spacing: 0.08em; text-transform: uppercase; }
+  .hero-value { font-size: 46px; font-weight: 600; color: #4FC3E8; line-height: 1.1; }
+  .hero-value small { font-size: 16px; color: #7C93A6; margin-left: 8px; }
+  .hero-note { font-size: 13px; color: #7C93A6; margin-top: 4px; }
+  .hero-note b { color: #DCE7F0; font-weight: 500; }
+  .metrics { display: flex; gap: 30px; flex-wrap: wrap; }
+  .metric { min-width: 110px; }
+  .metric-label { font-size: 11px; color: #7C93A6; letter-spacing: 0.08em; text-transform: uppercase; }
+  .metric-value { font-size: 32px; font-weight: 600; line-height: 1.15; }
+  .metric-value small { font-size: 14px; color: #7C93A6; margin-left: 5px; }
+  .metric-sub { font-size: 12px; color: #7C93A6; margin-top: 2px; }
+  .two-col { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .toggle-row { display: flex; gap: 8px; margin-bottom: 14px; }
+  .toggle-btn {
+    flex: 1; padding: 9px 10px; border-radius: 8px; cursor: pointer;
+    font-family: 'SF Mono', monospace; font-size: 12px; text-align: center;
+    background: transparent; color: #7C93A6; border: 1px solid #3A4F63;
+  }
+  .toggle-btn.active { background: #1D2F42; color: #DCE7F0; border-color: #4FC3E8; }
+  .sim-row { display: flex; justify-content: space-between; font-family: 'SF Mono', monospace; font-size: 13px; }
+  .bar-track { height: 10px; border-radius: 5px; background: #3A4F63; overflow: hidden; margin: 12px 0; }
+  .bar-fill { height: 100%; border-radius: 5px; transition: width 500ms ease; }
+  .savings-block { border-top: 1px solid #1D2F42; padding-top: 12px; display: grid; gap: 6px; }
+  .foot { font-family: 'SF Mono', monospace; font-size: 11px; color: #3A4F63; text-align: center; }
+  svg text { font-family: 'SF Mono', monospace; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex; align-items:baseline; gap:12px;">
+    <div class="logo">AQUA<span>WATT</span></div>
+    <div class="sub mono">Facility TX-HOU-01 · 12 MW IT load</div>
+  </div>
+  <div class="live mono">
+    <span class="dot"></span><span style="color:#5CC98F;">TELEMETRY LIVE</span>
+  </div>
+</header>
+
+<main>
+  <div class="panel hero">
+    <div>
+      <div class="hero-label">Fresh water consumed today</div>
+      <div class="hero-value mono"><span id="gallonsCounter">41,890</span><small>gal</small></div>
+      <div class="hero-note">≈ daily water supply for <b id="householdsToday">139</b> Houston households — and counting</div>
+    </div>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-label">WUE</div>
+        <div class="metric-value mono" id="wueValue" style="color:#E86A5C;">1.84<small>L/kWh</small></div>
+        <div class="metric-sub" id="wueSub">Above 1.0 target</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">PUE</div>
+        <div class="metric-value mono" id="pueValue" style="color:#F5A343;">1.38</div>
+        <div class="metric-sub">Power usage effectiveness</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Cooling mode</div>
+        <div class="metric-value mono" id="modeValue" style="color:#E86A5C;">EVAP</div>
+        <div class="metric-sub" id="modeSub">Evaporative towers</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">
+      <h2>Water draw — last 24 h</h2>
+      <div class="tag mono">gal/hr by cooling strategy</div>
+    </div>
+    <div id="hourlyChart"></div>
+    <div style="display:flex; gap:20px; margin-top:8px; font-size:12px;" class="mono">
+      <div><span style="color:#4FC3E8;">■</span> Evaporative (current)</div>
+      <div><span style="color:#5CC98F;">■</span> Hybrid dry (modeled)</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-title">
+        <h2>Monthly consumption</h2>
+        <div class="tag mono">million gal</div>
+      </div>
+      <div id="monthlyChart"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h2>Savings simulator</h2>
+        <div class="tag mono">annualized</div>
+      </div>
+      <div class="toggle-row">
+        <div class="toggle-btn active" id="btnEvap" onclick="setStrategy('evap')">Current: Evaporative</div>
+        <div class="toggle-btn" id="btnHybrid" onclick="setStrategy('hybrid')">Modeled: Hybrid dry</div>
+      </div>
+      <div class="sim-row">
+        <span style="color:#7C93A6;">Annual fresh water</span>
+        <span id="annualWater" style="color:#E86A5C;">22.4 MGal</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill" id="annualBar" style="width:100%; background:#E86A5C;"></div></div>
+      <div id="savingsDetail" class="mono" style="font-size:12px; color:#7C93A6;">
+        Switch to the modeled strategy to see projected savings.
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">AQUAWATT demo · simulated telemetry · fictional facility</div>
+</main>
+
+<script>
+// ---------- data ----------
+function makeHourly() {
+  const out = [];
+  for (let h = 0; h < 24; h++) {
+    const tempFactor = 0.55 + 0.45 * Math.pow(Math.sin(((h - 5) / 24) * Math.PI * 2), 2) * (h > 9 && h < 21 ? 1.35 : 0.7);
+    const evapGal = Math.round(3400 * tempFactor + 260 * Math.sin(h * 1.7));
+    const hybridGal = Math.round(evapGal * (h > 10 && h < 18 ? 0.22 : 0.04));
+    out.push({ hour: String(h).padStart(2, "0") + ":00", evap: evapGal, hybrid: hybridGal });
+  }
+  return out;
+}
+function makeMonthly() {
+  const months = ["Aug","Sep","Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul"];
+  return months.map((m, i) => {
+    const summer = i < 2 || i > 8;
+    const gal = summer ? 2.31 + Math.random() * 0.32 : 1.42 + Math.random() * 0.4;
+    return { month: m, gal: +gal.toFixed(2) };
+  });
+}
+const hourlyData = makeHourly();
+const monthlyData = makeMonthly();
+const fmt = (n) => n.toLocaleString("en-US");
+
+const annual = (() => {
+  const evapMGalYr = 22.4, hybridMGalYr = 2.1, waterCostPerKGal = 4.85;
+  const savedMGal = evapMGalYr - hybridMGalYr;
+  return {
+    evapMGalYr, hybridMGalYr, savedMGal,
+    savedDollars: savedMGal * 1000 * waterCostPerKGal,
+    households: Math.round((savedMGal * 1e6) / (300 * 365)),
+  };
+})();
+
+// ---------- SVG chart helpers (no library) ----------
+function svgEl(tag, attrs) {
+  const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const k in attrs) el.setAttribute(k, attrs[k]);
+  return el;
+}
+
+function drawAreaChart(containerId, data, keys, colors, width, height) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+  const svg = svgEl("svg", { viewBox: `0 0 ${width} ${height}`, width: "100%", height: height, style: "overflow:visible" });
+  const padL = 46, padB = 22, padT = 10, padR = 8;
+  const plotW = width - padL - padR, plotH = height - padT - padB;
+
+  const allVals = data.flatMap(d => keys.map(k => d[k]));
+  const maxV = Math.max(...allVals) * 1.1;
+
+  for (let i = 0; i <= 4; i++) {
+    const y = padT + (plotH * i) / 4;
+    svg.appendChild(svgEl("line", { x1: padL, x2: width - padR, y1: y, y2: y, stroke: "#3A4F63", "stroke-dasharray": "2 6" }));
+    const val = Math.round(maxV - (maxV * i) / 4);
+    const t = svgEl("text", { x: padL - 8, y: y + 4, "text-anchor": "end", fill: "#7C93A6", "font-size": "10" });
+    t.textContent = fmt(val);
+    svg.appendChild(t);
+  }
+
+  const n = data.length;
+  const xStep = plotW / (n - 1);
+
+  keys.forEach((key, ki) => {
+    const color = colors[ki];
+    let path = "M";
+    let areaPath = "M";
+    data.forEach((d, i) => {
+      const x = padL + i * xStep;
+      const y = padT + plotH - (d[key] / maxV) * plotH;
+      path += (i === 0 ? "" : "L") + x + "," + y + " ";
+      areaPath += (i === 0 ? x + "," + (padT + plotH) + " L" + x + "," + y + " " : "L" + x + "," + y + " ");
+    });
+    areaPath += `L${padL + (n - 1) * xStep},${padT + plotH} Z`;
+    svg.appendChild(svgEl("path", { d: areaPath, fill: color, opacity: "0.12" }));
+    svg.appendChild(svgEl("path", { d: path, fill: "none", stroke: color, "stroke-width": "2" }));
+  });
+
+  data.forEach((d, i) => {
+    if (i % 3 !== 0) return;
+    const x = padL + i * xStep;
+    const t = svgEl("text", { x: x, y: height - 4, "text-anchor": "middle", fill: "#7C93A6", "font-size": "10" });
+    t.textContent = d.hour;
+    svg.appendChild(t);
+  });
+
+  container.appendChild(svg);
+}
+
+function drawBarChart(containerId, data, key, color, width, height, targetLine) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+  const svg = svgEl("svg", { viewBox: `0 0 ${width} ${height}`, width: "100%", height: height });
+  const padL = 40, padB = 22, padT = 10, padR = 8;
+  const plotW = width - padL - padR, plotH = height - padT - padB;
+  const maxV = Math.max(...data.map(d => d[key]), targetLine) * 1.15;
+
+  for (let i = 0; i <= 4; i++) {
+    const y = padT + (plotH * i) / 4;
+    svg.appendChild(svgEl("line", { x1: padL, x2: width - padR, y1: y, y2: y, stroke: "#3A4F63", "stroke-dasharray": "2 6" }));
+    const val = (maxV - (maxV * i) / 4).toFixed(1);
+    const t = svgEl("text", { x: padL - 6, y: y + 4, "text-anchor": "end", fill: "#7C93A6", "font-size": "10" });
+    t.textContent = val;
+    svg.appendChild(t);
+  }
+
+  const n = data.length;
+  const slot = plotW / n;
+  const barW = slot * 0.55;
+
+  data.forEach((d, i) => {
+    const x = padL + i * slot + (slot - barW) / 2;
+    const barH = (d[key] / maxV) * plotH;
+    const y = padT + plotH - barH;
+    svg.appendChild(svgEl("rect", { x, y, width: barW, height: barH, fill: color, rx: 3 }));
+    const t = svgEl("text", { x: x + barW / 2, y: height - 4, "text-anchor": "middle", fill: "#7C93A6", "font-size": "10" });
+    t.textContent = d.month;
+    svg.appendChild(t);
+  });
+
+  const ty = padT + plotH - (targetLine / maxV) * plotH;
+  svg.appendChild(svgEl("line", { x1: padL, x2: width - padR, y1: ty, y2: ty, stroke: "#F5A343", "stroke-dasharray": "4 4" }));
+  const lt = svgEl("text", { x: width - padR, y: ty - 4, "text-anchor": "end", fill: "#F5A343", "font-size": "10" });
+  lt.textContent = "target";
+  svg.appendChild(lt);
+
+  container.appendChild(svg);
+}
+
+function render() {
+  const w = Math.min(window.innerWidth - 70, 1120);
+  drawAreaChart("hourlyChart", hourlyData, ["evap", "hybrid"], ["#4FC3E8", "#5CC98F"], w, 240);
+  drawBarChart("monthlyChart", monthlyData, "gal", "#2A7FA3", Math.min(w / 2 - 10, 520), 220, 1.6);
+}
+
+// ---------- live counter ----------
+let gallonsToday = 41890;
+setInterval(() => {
+  gallonsToday += Math.round(0.8 + Math.random() * 0.4);
+  document.getElementById("gallonsCounter").textContent = fmt(gallonsToday);
+  document.getElementById("householdsToday").textContent = fmt(Math.round(gallonsToday / 300));
+}, 1000);
+
+// ---------- strategy toggle ----------
+let strategy = "evap";
+function setStrategy(s) {
+  strategy = s;
+  document.getElementById("btnEvap").classList.toggle("active", s === "evap");
+  document.getElementById("btnHybrid").classList.toggle("active", s === "hybrid");
+
+  const wue = s === "evap" ? 1.84 : 0.19;
+  const pue = s === "evap" ? 1.38 : 1.46;
+  const wueEl = document.getElementById("wueValue");
+  wueEl.innerHTML = wue.toFixed(2) + "<small>L/kWh</small>";
+  wueEl.style.color = wue > 1 ? "#E86A5C" : "#5CC98F";
+  document.getElementById("wueSub").textContent = wue > 1 ? "Above 1.0 target" : "Within target";
+  document.getElementById("pueValue").textContent = pue.toFixed(2);
+  document.getElementById("modeValue").textContent = s === "evap" ? "EVAP" : "HYBRID";
+  document.getElementById("modeValue").style.color = s === "evap" ? "#E86A5C" : "#5CC98F";
+  document.getElementById("modeSub").textContent = s === "evap" ? "Evaporative towers" : "Dry + greywater assist";
+
+  const water = s === "evap" ? annual.evapMGalYr : annual.hybridMGalYr;
+  document.getElementById("annualWater").textContent = water + " MGal";
+  document.getElementById("annualWater").style.color = s === "evap" ? "#E86A5C" : "#5CC98F";
+  const pct = (water / annual.evapMGalYr) * 100;
+  const bar = document.getElementById("annualBar");
+  bar.style.width = pct + "%";
+  bar.style.background = s === "evap" ? "#E86A5C" : "#5CC98F";
+
+  const detail = document.getElementById("savingsDetail");
+  if (s === "hybrid") {
+    detail.innerHTML = `
+      <div class="savings-block">
+        <div class="sim-row"><span style="color:#7C93A6;">Water saved / yr</span><span style="color:#5CC98F;">${annual.savedMGal.toFixed(1)} MGal</span></div>
+        <div class="sim-row"><span style="color:#7C93A6;">Utility cost saved / yr</span><span style="color:#5CC98F;">$${fmt(Math.round(annual.savedDollars))}</span></div>
+        <div style="font-size:12px; color:#7C93A6; font-family:-apple-system,sans-serif;">Equivalent to the yearly water supply of ~${fmt(annual.households)} households.</div>
+      </div>`;
+  } else {
+    detail.textContent = "Switch to the modeled strategy to see projected savings.";
+  }
+}
+
+render();
+window.addEventListener("resize", render);
+</script>
+</body>
+</html>
