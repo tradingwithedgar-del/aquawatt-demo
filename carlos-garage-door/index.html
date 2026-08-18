@@ -25,7 +25,7 @@
   --ink:#101214;
   --ink-2:#2A2F32;
   --hazard:#FFD400;
-  --red:#A81F16;
+  --red:#C1201B;
   --disp:'Oswald','Arial Narrow','Helvetica Neue Condensed',Arial,sans-serif;
   --body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
   --mono:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace;
@@ -67,16 +67,16 @@ a{color:inherit}
 .util{position:sticky;top:0;z-index:60;background:var(--ink);color:var(--steel-lt);
   display:flex;align-items:center;gap:16px;padding:9px var(--pad);border-bottom:1px solid #2A2F32}
 .mark{display:flex;align-items:center;gap:10px;color:#fff;white-space:nowrap}
-.mark .g{width:15px;height:19px;flex:none;display:grid;grid-template-rows:repeat(4,1fr);gap:2px}
-.mark .g i{background:var(--steel-lt)}
-.mark .g i:first-child{background:var(--red)}
+.mark .logo{width:38px;height:38px;flex:none;border:1px dashed var(--steel);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--mono);font-size:7.5px;line-height:1.15;letter-spacing:.08em;color:var(--steel)}
 .mark span{font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:.03em;text-transform:uppercase}
 .util .sp{margin-left:auto}
 .esb{background:none;border:0;color:var(--steel-lt);font-family:var(--mono);font-size:10.5px;
   letter-spacing:.14em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;
   cursor:pointer;padding:12px 2px;min-height:44px}
 .esb:hover{color:var(--hazard)}
-.unum{color:var(--hazard);font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:.03em;
+.unum{color:#fff;font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:.03em;
   white-space:nowrap;text-decoration:none;min-height:44px;display:none;align-items:center}
 @media(min-width:900px){.unum{display:inline-flex}}
 
@@ -96,6 +96,8 @@ h3{font-family:var(--disp);font-weight:600;font-size:20px;text-transform:upperca
   border-bottom:4px solid var(--ink)}
 .open h1{font-size:clamp(40px,9vw,92px);margin-top:22px;max-width:12ch}
 .open .said{font-size:18px;max-width:46ch;margin-top:18px;color:var(--ink)}
+.promise{display:inline-block;margin-top:22px;background:var(--red);color:#fff;
+  padding:9px 15px 8px;font-weight:700;letter-spacing:.14em;font-size:11px}
 .picker{display:grid;gap:2px;margin-top:34px;background:var(--ink);border:2px solid var(--ink)}
 @media(min-width:760px){.picker{grid-template-columns:1fr 1fr}}
 .sym{background:var(--steel-lt);border:0;cursor:pointer;text-align:left;padding:20px 46px 20px 20px;
@@ -109,19 +111,19 @@ h3{font-family:var(--disp);font-weight:600;font-size:20px;text-transform:upperca
 .sym::after{content:"";position:absolute;right:20px;top:26px;width:10px;height:10px;
   border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(-45deg)}
 .dial{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;text-decoration:none;
-  background:var(--hazard);color:var(--ink);border:2px solid var(--ink);border-top:0;
-  padding:20px 22px 18px}
+  background:var(--ink);color:#fff;border:2px solid var(--ink);border-top:0;
+  border-left:9px solid var(--red);padding:20px 22px 18px}
 .dial .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
 .dial .n{font-family:var(--disp);font-weight:700;font-size:clamp(36px,8.4vw,68px);
   letter-spacing:.005em;line-height:.95;margin-left:auto}
-.dial:hover{background:var(--ink);color:var(--hazard)}
+.dial:hover{background:var(--red)}
 .alt{margin-top:16px;font-size:15px;color:var(--ink-2)}
 .alt a{text-decoration:underline;text-underline-offset:3px}
 
 /* ── 2. PRICE ──────────────────────────────────────── */
 .price{background:var(--ink);color:var(--steel-lt);margin-top:0}
 .price h2{color:#fff}
-.price .kick{color:var(--hazard)}
+.price .kick{color:#E8A9A5}
 .price .body-lg{color:var(--steel-lt)}
 .wo{width:100%;border-collapse:collapse;margin-top:30px}
 .wo caption{caption-side:top;text-align:left;background:var(--hazard);color:var(--ink);
@@ -132,7 +134,7 @@ h3{font-family:var(--disp);font-weight:600;font-size:20px;text-transform:upperca
 .wo td{padding:17px 13px;border-bottom:1px solid #363B3E;vertical-align:top;color:#fff}
 .wo td:first-child span{font-family:var(--disp);font-weight:600;font-size:20px;text-transform:uppercase;letter-spacing:.02em}
 .wo td small{display:block;font-size:14px;color:var(--steel);margin-top:5px}
-.wo td.n{font-family:var(--disp);font-weight:600;font-size:23px;white-space:nowrap;text-align:right;color:var(--hazard)}
+.wo td.n{font-family:var(--disp);font-weight:600;font-size:23px;white-space:nowrap;text-align:right;color:#fff}
 .after{margin-top:22px;font-size:15px;color:var(--steel);max-width:60ch}
 
 /* ── 3. WHO SHOWS UP ───────────────────────────────── */
@@ -149,15 +151,16 @@ h3{font-family:var(--disp);font-weight:600;font-size:20px;text-transform:upperca
 .facts dd{font-size:16px}
 
 /* ── 4. PROOF, on hazard ground ────────────────────── */
-.proof{background:var(--hazard);color:var(--ink)}
-.proof .kick{color:var(--ink-2)}
+.proof{background:var(--red);color:#fff}
+.proof .kick{color:#F6CFCC}
+.proof h2{color:#fff}
 .qs{display:grid;gap:30px;margin-top:30px}
 @media(min-width:780px){.qs{grid-template-columns:1fr 1fr;gap:32px 48px}}
 @media(min-width:1180px){.qs{grid-template-columns:repeat(3,1fr)}}
-.q{border-top:3px solid var(--ink);padding-top:14px}
+.q{border-top:3px solid #fff;padding-top:14px}
 .q p{font-size:16px;line-height:1.5}
 .q cite{display:block;margin-top:11px;font-style:normal;font-family:var(--mono);font-size:10.5px;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+  letter-spacing:.12em;text-transform:uppercase;color:#F6CFCC}
 
 /* ── 5. WORK, asymmetric ───────────────────────────── */
 .work{background:var(--steel-lt)}
@@ -176,7 +179,7 @@ h3{font-family:var(--disp);font-weight:600;font-size:20px;text-transform:upperca
 /* ── 6. SERVICES, dense and utilitarian ────────────── */
 .svc{background:var(--ink);color:var(--steel-lt)}
 .svc h2{color:#fff}
-.svc .kick{color:var(--hazard)}
+.svc .kick{color:#E8A9A5}
 .svc dl{margin-top:28px;border-top:1px solid #363B3E}
 .svc dl>div{padding:18px 0;border-bottom:1px solid #363B3E;display:grid;gap:6px}
 @media(min-width:760px){.svc dl>div{grid-template-columns:280px 1fr;gap:32px;align-items:baseline}}
@@ -196,9 +199,9 @@ textarea{min-height:108px;resize:vertical}
   font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:10px 13px;
   border-bottom:3px solid var(--ink)}
 .picked.on{display:block}
-.send{background:var(--ink);color:var(--hazard);border:0;cursor:pointer;font-family:var(--disp);font-weight:700;
+.send{background:var(--red);color:#fff;border:0;cursor:pointer;font-family:var(--disp);font-weight:700;
   text-transform:uppercase;letter-spacing:.03em;font-size:21px;padding:17px 30px;min-height:56px;justify-self:start}
-.send:hover{background:var(--red);color:#fff}
+.send:hover{background:var(--ink);color:#fff}
 .small{font-size:14px;color:var(--ink-2);margin-top:12px;max-width:52ch}
 .done{display:none;border-top:3px solid var(--ink);padding-top:16px;margin-top:30px;max-width:660px}
 .done.on{display:block}
@@ -209,12 +212,12 @@ footer{background:var(--ink);color:var(--steel);padding:46px var(--pad) 42px;fon
 @media(min-width:700px){.fcols{grid-template-columns:1fr 1fr}}
 footer b{display:block;color:#fff;font-family:var(--disp);font-weight:600;font-size:19px;text-transform:uppercase;
   letter-spacing:.03em;margin-bottom:9px}
-footer a{color:var(--hazard)}
+footer a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 .fine{max-width:1240px;margin:32px auto 0;padding-top:18px;border-top:1px solid #363B3E;font-family:var(--mono);
   font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#6E7477}
 
-.callstrip{position:fixed;left:0;right:0;bottom:0;z-index:70;display:block;text-align:center;background:var(--hazard);
-  color:var(--ink);text-decoration:none;font-family:var(--disp);font-weight:700;text-transform:uppercase;
+.callstrip{position:fixed;left:0;right:0;bottom:0;z-index:70;display:block;text-align:center;background:var(--red);
+  color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;text-transform:uppercase;
   letter-spacing:.04em;font-size:21px;padding:15px 12px;border-top:3px solid var(--ink);min-height:56px}
 @media(min-width:900px){.callstrip{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
@@ -225,7 +228,7 @@ footer a{color:var(--hazard)}
 <div class="strip"><b>Demo preview</b> &nbsp;·&nbsp; Grand Nash Studio for Carlos Garage Door Services &nbsp;·&nbsp; Sample pricing</div>
 
 <div class="util">
-  <span class="mark"><span class="g" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Carlos Garage Door</span></span>
+  <span class="mark"><span class="logo" aria-hidden="true">LOGO<br>HERE</span><span>Carlos Garage Door</span></span>
   <span class="sp"></span>
   <button class="esb" id="es" type="button">Espanol</button>
   <a class="unum" href="tel:+18328454632">832 845 4632</a>
@@ -237,6 +240,8 @@ footer a{color:var(--hazard)}
     <p class="hz" data-en="Broken spring? Do not try to lift it" data-es="&#191;Resorte roto? No intentes levantarla">Broken spring? Do not try to lift it</p>
     <h1 class="d" data-en="What is your door doing?" data-es="&#191;Que hace tu puerta?">What is your door doing?</h1>
     <p class="said" data-en="Garage door repair across Houston and the areas around it. One person, his own truck, answers his own phone. Se habla espanol." data-es="Reparacion de puertas de garaje en Houston y las areas cercanas. Una persona, su propia troca, contesta su propio telefono. Se habla espanol.">Garage door repair across Houston and the areas around it. One person, his own truck, answers his own phone. Se habla espanol.</p>
+
+    <p class="promise mono" data-en="Fast service &nbsp;·&nbsp; Honest prices &nbsp;·&nbsp; Quality work" data-es="Servicio rapido &nbsp;·&nbsp; Precios honestos &nbsp;·&nbsp; Trabajo de calidad">Fast service &nbsp;·&nbsp; Honest prices &nbsp;·&nbsp; Quality work</p>
 
     <div class="picker">
       <button class="sym" type="button" data-issue="Loud bang, now it will not lift">
@@ -271,6 +276,7 @@ footer a{color:var(--hazard)}
     <p class="kick mono" data-en="Second question" data-es="Segunda pregunta">Second question</p>
     <h2 data-en="What is this going to cost me?" data-es="&#191;Cuanto me va a costar?">What is this going to cost me?</h2>
     <p class="body-lg" data-en="Most garage door outfits in Houston will not tell you until somebody is standing in your driveway. Here is the range before you call. Carlos confirms the exact number with you on the phone, and it does not change when he arrives." data-es="La mayoria de las companias de puertas en Houston no te dicen hasta que ya hay alguien en tu cochera. Aqui esta el rango antes de que llames. Carlos confirma el numero exacto por telefono, y no cambia cuando llega.">Most garage door outfits in Houston will not tell you until somebody is standing in your driveway. Here is the range before you call. Carlos confirms the exact number with you on the phone, and it does not change when he arrives.</p>
+    <p class="promise mono" data-en="Honest prices is on the logo. Here it is in numbers." data-es="Precios honestos esta en el logo. Aqui esta en numeros.">Honest prices is on the logo. Here it is in numbers.</p>
     <table class="wo">
       <caption data-en="Sample figures for this demo. Carlos&#39;s real numbers go here." data-es="Cifras de ejemplo para esta demostracion. Aqui van los precios reales de Carlos.">Sample figures for this demo. Carlos's real numbers go here.</caption>
       <thead><tr><th scope="col" data-en="Job" data-es="Trabajo">Job</th><th scope="col" data-en="Typical range" data-es="Rango tipico">Typical range</th></tr></thead>
