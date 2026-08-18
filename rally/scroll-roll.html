@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>RALLY — bottle roll rig</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{ --paper:#F7F5F0; --warm:#EFEBE2; --ink:#0B1739; --cobalt:#1B3C96; --gold:#E0A02E; --mist:#56658A; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Instrument Sans",sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+h1,h2{font-family:Archivo,sans-serif;font-weight:800;font-variation-settings:"wdth" 112;letter-spacing:-.026em;line-height:.97;text-wrap:balance}
+.shell{width:min(1180px,100% - 48px);margin-inline:auto}
+.note{background:var(--ink);color:var(--paper);font-size:13px;padding:10px 24px;text-align:center;position:relative;z-index:5}
+.note b{color:var(--gold)}
+
+/* the bottle rides above the page for its whole length */
+#roller{
+  position:fixed;top:0;left:0;z-index:6;pointer-events:none;
+  width:min(560px,56vw);
+  will-change:transform;
+  filter:drop-shadow(0 22px 26px rgba(11,23,57,.26));
+}
+#roller canvas{display:block;width:100%;height:auto}
+
+section{position:relative;z-index:4;padding:22vh 0}
+section:nth-of-type(even){background:var(--warm)}
+h1{font-size:clamp(40px,6vw,78px);max-width:15ch}
+h2{font-size:clamp(30px,4.4vw,52px);max-width:16ch}
+section p{margin-top:20px;max-width:46ch;color:var(--mist)}
+/* keep copy clear of the bottle's lane */
+.left{max-width:52%}
+.right{max-width:52%;margin-left:auto}
+@media (max-width:820px){ .left,.right{max-width:100%} section{padding:16vh 0} section p{max-width:none} }
+
+footer{
+  position:relative;z-index:4;background:var(--ink);color:var(--paper);
+  min-height:62vh;display:grid;align-content:end;padding:0 0 48px;
+}
+footer .shell{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+footer h2{font-size:clamp(28px,4vw,46px);max-width:14ch}
+footer small{color:#9EABC8;font-size:13px}
+
+.hud{
+  position:fixed;right:14px;bottom:14px;z-index:9;
+  font-family:Archivo;font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  background:rgba(11,23,57,.82);color:#F7F5F0;padding:7px 11px;border-radius:2px;
+  display:flex;gap:12px;
+}
+.hud span{font-variant-numeric:tabular-nums}
+.boot{position:fixed;inset:0;z-index:20;display:grid;place-items:center;background:var(--paper);
+  font-family:Archivo;font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);
+  transition:opacity .45s ease}
+.boot.done{opacity:0;pointer-events:none}
+
+@media (prefers-reduced-motion:reduce){
+  #roller{position:static;margin:8vh auto;width:420px;transform:none!important;filter:none}
+  .hud{display:none}
+}
+</style>
+</head>
+<body>
+
+<p class="note">RALLY bottle roll. <b>The real label, un-wrapped from the product shot</b> and mapped back onto measured geometry.</p>
+
+<div id="roller"><canvas id="seq" width="1100" height="460" aria-hidden="true"></canvas></div>
+
+<section><div class="shell left">
+  <h1>It starts at the top.</h1>
+  <p>The bottle enters at the top of the screen and rolls the entire length of the page. Its rotation is tied to how far it has travelled, the way a real bottle rolls, so it never spins on the spot and never drifts on a timer.</p>
+</div></section>
+
+<section><div class="shell right">
+  <h2>Every frame is your scroll position.</h2>
+  <p>Scroll up and it rolls backwards. Stop halfway and it stops halfway. Nothing plays on its own.</p>
+</div></section>
+
+<section><div class="shell left">
+  <h2>It passes in front.</h2>
+  <p>The bottle drifts steadily left to right as it descends, so the roll always turns the same way. It travels above the page rather than behind it, so it crosses over the copy as it goes.</p>
+</div></section>
+
+<section><div class="shell right">
+  <h2>And it keeps going.</h2>
+  <p>However long the page gets, the roll stretches to match it. Add sections and the travel redistributes on its own.</p>
+</div></section>
+
+<footer><div class="shell">
+  <h2>It comes to rest here.</h2>
+  <small>Bottom of the footer. End of the roll.</small>
+</div></footer>
+
+<div class="hud"><span id="hudPct">0%</span><span id="hudFrame">01/48</span></div>
+<div class="boot" id="boot">Loading frames…</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var COUNT = 48;                          // frames in the sequence
+  var TURNS = 4;                           // full revolutions over the whole page
+  var PATH  = function(i){ return "frames/roll_" + String(i).padStart(3,"0") + ".webp"; };
+
+  var roller = document.getElementById("roller");
+  var canvas = document.getElementById("seq");
+  var ctx = canvas.getContext("2d");
+  var hudPct = document.getElementById("hudPct");
+  var hudFrame = document.getElementById("hudFrame");
+  var boot = document.getElementById("boot");
+  var footer = document.querySelector("footer");
+
+  var frames = new Array(COUNT), ready = 0, drawn = -1, queued = false;
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)");
+
+  function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+
+  function paint(i){
+    var img = frames[i];
+    if (!img || !img.complete) return;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.drawImage(img,0,0,canvas.width,canvas.height);
+    drawn = i;
+    hudFrame.textContent = String(i+1).padStart(2,"0") + "/" + COUNT;
+  }
+
+  function tick(){
+    queued = false;
+
+    var doc = document.documentElement;
+    var travel = doc.scrollHeight - window.innerHeight;
+    var p = travel > 0 ? clamp(window.scrollY / travel, 0, 1) : 0;
+
+    var w = roller.offsetWidth;
+    var h = roller.offsetHeight || w * 1.333;
+
+    // vertical: enters above the fold, finishes low in the footer
+    var fRect = footer.getBoundingClientRect();
+    var top = -h * 0.55;
+    var bottom = window.innerHeight - h - 28;
+    var y = top + (bottom - top) * p;
+
+    // once the footer is on screen, ride it down to the bottom of the screen
+    if (fRect.top < window.innerHeight) {
+      var settle = clamp((window.innerHeight - fRect.top) / Math.max(1, Math.min(fRect.height, window.innerHeight)), 0, 1);
+      y = y + (bottom - y) * settle;
+    }
+
+    // horizontal: drifts one way only, left to right, so the roll never reverses
+    var pad = Math.max(12, window.innerWidth * 0.05);
+    var lane = window.innerWidth - w - pad * 2;
+    var ease = p * p * (3 - 2 * p);            // smoothstep, keeps it monotonic
+    var x = pad + lane * ease;
+
+    roller.style.transform = "translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0)";
+
+    // rotation follows distance travelled: TURNS revolutions across the page
+    var i = Math.floor(p * TURNS * COUNT) % COUNT;
+    if (i < 0) i += COUNT;
+    if (i !== drawn) paint(i);
+
+    hudPct.textContent = Math.round(p * 100) + "%";
+  }
+
+  function onScroll(){ if (!queued){ queued = true; requestAnimationFrame(tick); } }
+
+  for (var i = 0; i < COUNT; i++){
+    (function(i){
+      var img = new Image();
+      img.decoding = "async";
+      img.onload = img.onerror = function(){
+        if (++ready === COUNT){ boot.classList.add("done"); paint(0); tick(); }
+      };
+      img.src = PATH(i);
+      frames[i] = img;
+    })(i);
+  }
+
+  if (!reduce.matches){
+    addEventListener("scroll", onScroll, { passive:true });
+    addEventListener("resize", onScroll);
+  } else {
+    boot.classList.add("done");
+  }
+})();
+</script>
+</body>
+</html>
