@@ -20,9 +20,9 @@ h1,h2{font-family:Archivo,sans-serif;font-weight:800;font-variation-settings:"wd
 /* the bottle rides above the page for its whole length */
 #roller{
   position:fixed;top:0;left:0;z-index:6;pointer-events:none;
-  width:min(300px,34vw);
+  width:min(440px,48vw);
   will-change:transform;
-  filter:drop-shadow(0 26px 30px rgba(11,23,57,.28));
+  filter:drop-shadow(0 22px 26px rgba(11,23,57,.26));
 }
 #roller canvas{display:block;width:100%;height:auto}
 
@@ -57,16 +57,16 @@ footer small{color:#9EABC8;font-size:13px}
 .boot.done{opacity:0;pointer-events:none}
 
 @media (prefers-reduced-motion:reduce){
-  #roller{position:static;margin:8vh auto;width:220px;transform:none!important;filter:none}
+  #roller{position:static;margin:8vh auto;width:340px;transform:none!important;filter:none}
   .hud{display:none}
 }
 </style>
 </head>
 <body>
 
-<p class="note">Roll rig for RALLY. <b>Placeholder frames</b> — real bottle renders drop into the same sequence.</p>
+<p class="note">RALLY bottle roll. <b>48 frames rendered in 3D</b>, one full turn every quarter of the page.</p>
 
-<div id="roller"><canvas id="seq" width="420" height="560" aria-hidden="true"></canvas></div>
+<div id="roller"><canvas id="seq" width="760" height="400" aria-hidden="true"></canvas></div>
 
 <section><div class="shell left">
   <h1>It starts at the top.</h1>
@@ -79,8 +79,8 @@ footer small{color:#9EABC8;font-size:13px}
 </div></section>
 
 <section><div class="shell left">
-  <h2>It clears the copy.</h2>
-  <p>The bottle drifts steadily from left to right as it descends, so the roll always turns the same way, the way it would if it were really rolling.</p>
+  <h2>It passes in front.</h2>
+  <p>The bottle drifts steadily left to right as it descends, so the roll always turns the same way. It travels above the page rather than behind it, so it crosses over the copy as it goes.</p>
 </div></section>
 
 <section><div class="shell right">
@@ -102,7 +102,7 @@ footer small{color:#9EABC8;font-size:13px}
 
   var COUNT = 48;                          // frames in the sequence
   var TURNS = 4;                           // full revolutions over the whole page
-  var PATH  = function(i){ return "frames-test/f_" + String(i).padStart(3,"0") + ".png"; };
+  var PATH  = function(i){ return "frames/roll_" + String(i).padStart(3,"0") + ".webp"; };
 
   var roller = document.getElementById("roller");
   var canvas = document.getElementById("seq");
@@ -138,7 +138,7 @@ footer small{color:#9EABC8;font-size:13px}
 
     // vertical: enters above the fold, finishes low in the footer
     var fRect = footer.getBoundingClientRect();
-    var top = -h * 0.35;
+    var top = -h * 0.55;
     var bottom = window.innerHeight - h - 28;
     var y = top + (bottom - top) * p;
 
