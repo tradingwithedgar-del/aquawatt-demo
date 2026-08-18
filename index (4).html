@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>RALLY — King Coconut Water</title>
+<meta name="description" content="RALLY is single-ingredient king coconut water, sourced from Sri Lanka's Coconut Triangle and bottled in glass. No added sugar, no preservatives. Launching in Los Angeles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F5F0;
+  --paper-warm:#EFEBE2;
+  --ink:#0B1739;
+  --cobalt:#1B3C96;
+  --cobalt-lift:#2B55BE;
+  --gold:#E0A02E;
+  --rust:#B34A22;
+  --mist:#56658A;
+  --gold-on-cobalt:#F0B84A;
+  --hair:rgba(11,23,57,.14);
+  --shell:min(1240px,100% - 48px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.6;
+  overflow-x:hidden;
+}
+.display,h1,h2,h3{
+  font-family:Archivo,"Instrument Sans",sans-serif;
+  font-weight:800;font-variation-settings:"wdth" 112;
+  letter-spacing:-.028em;line-height:.94;text-wrap:balance;
+}
+a{color:inherit}
+img{display:block;max-width:100%}
+.shell{width:var(--shell);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:where(a,button,input):focus-visible{outline:3px solid var(--rust);outline-offset:3px}
+
+.eyebrow{
+  font-family:Archivo;font-weight:700;font-variation-settings:"wdth" 100;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);
+}
+
+/* ---- demo marker ---- */
+.demo{background:var(--ink);color:var(--paper);font-size:13px;padding:9px 24px;text-align:center;line-height:1.45}
+.demo b{color:var(--gold-on-cobalt);font-weight:600}
+
+/* ---- header ---- */
+header{position:fixed;inset:0 0 auto;z-index:80;transition:background .3s ease,border-color .3s ease;border-bottom:1px solid transparent;color:var(--paper)}
+header.stuck{background:rgba(247,245,240,.9);backdrop-filter:blur(12px) saturate(150%);border-bottom-color:var(--hair)}
+header.stuck .mark{color:var(--cobalt)}
+header.stuck nav a{color:var(--ink)}
+header.stuck.dark{background:rgba(9,18,44,.72);border-bottom-color:rgba(255,255,255,.14)}
+header.stuck.dark .mark,header.stuck.dark nav a{color:var(--paper)}
+header.stuck.dark .btn.pale{background:var(--paper);color:var(--cobalt)}
+.bar{display:flex;align-items:center;gap:22px;height:70px}
+.mark{
+  font-family:Archivo;font-weight:900;font-variation-settings:"wdth" 118;
+  font-size:22px;letter-spacing:.09em;text-decoration:none;color:var(--cobalt);
+  display:inline-flex;align-items:center;min-height:44px;
+}
+header .mark,header nav a{color:var(--paper)}
+nav{margin-left:auto;display:flex;gap:28px;align-items:center}
+nav a{font-size:14.5px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;opacity:.78}
+nav a:hover{opacity:1}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:50px;padding:13px 26px;border-radius:2px;cursor:pointer;
+  font-family:Archivo;font-weight:700;font-variation-settings:"wdth" 104;
+  font-size:15px;letter-spacing:.005em;text-decoration:none;
+  background:var(--cobalt);color:var(--paper);border:1.5px solid var(--cobalt);
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
+}
+.btn:hover{background:var(--ink);border-color:var(--ink)}
+.btn.line{background:transparent;color:var(--cobalt)}
+.btn.line:hover{background:var(--cobalt);color:var(--paper)}
+.btn.pale{background:var(--paper);color:var(--cobalt);border-color:var(--paper)}
+.btn.pale:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+
+/* ---- hero ---- */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;background:var(--cobalt);color:var(--paper);overflow:hidden}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:120px 0 72px min(6vw,80px);max-width:44rem}
+.hero .eyebrow{color:var(--gold-on-cobalt)}
+h1{font-size:clamp(42px,5.6vw,84px);font-weight:900;font-variation-settings:"wdth" 118;margin:26px 0 0}
+h1 .ln{display:block;overflow:hidden}
+h1 .w{display:inline-block;will-change:transform}
+h1 em{font-style:normal;color:var(--gold-on-cobalt)}
+h1 .ln{display:block}
+.hero p{font-size:clamp(16.5px,1.5vw,19px);max-width:46ch;margin-top:28px;color:#DFE6F6}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px}
+.hero-shot{position:relative;overflow:hidden}
+.hero-shot img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-shot::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--cobalt) 0%,transparent 22%);pointer-events:none}
+.scroll-hint{
+  position:absolute;left:min(6vw,80px);bottom:34px;z-index:3;display:flex;align-items:center;gap:12px;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#C3D0EE;font-family:Archivo;font-weight:600;
+}
+.scroll-hint i{display:block;width:46px;height:1px;background:var(--gold-on-cobalt);transform-origin:left}
+
+/* ---- scroll story ---- */
+.story{position:relative;background:var(--ink)}
+.track{height:520vh}
+.stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.plate{position:absolute;inset:0;opacity:0}
+.plate img{width:100%;height:100%;object-fit:cover}
+/* if a photo cannot load (offline, or a host that blocks the image CDN) the
+   layout still reads instead of showing a broken-image glyph */
+img.missing{visibility:hidden}
+.miss{position:relative;background:repeating-linear-gradient(135deg,#243052 0 12px,#1D2846 12px 24px)}
+.miss::before{
+  content:attr(data-shot);position:absolute;inset:0;display:grid;place-content:center;
+  font-family:Archivo;font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);text-align:center;padding:16px;
+}
+.hero-shot.miss,.travel figure.miss{background:repeating-linear-gradient(135deg,#E4DFD2 0 12px,#DAD4C4 12px 24px)}
+.hero-shot.miss::before,.travel figure.miss::before{color:rgba(11,23,57,.5)}
+.plate::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,12,32,.62) 0%,rgba(6,12,32,.34) 42%,rgba(6,12,32,.78) 100%)}
+.plate:first-of-type{opacity:1}
+
+.travel{
+  position:absolute;left:50%;top:50%;z-index:4;
+  width:clamp(196px,21vw,318px);margin:-31vh 0 0 -10.5vw;
+  will-change:transform;
+}
+.travel figure{margin:0;background:var(--paper);padding:14px 14px 0;box-shadow:0 54px 74px -34px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.1)}
+.travel img{width:100%;height:auto}
+.travel figcaption{
+  font-family:Archivo;font-weight:700;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mist);padding:13px 2px 14px;display:flex;justify-content:space-between;gap:10px;
+}
+
+.beats{position:absolute;inset:0;z-index:6;display:grid;align-content:center;pointer-events:none}
+.beat{
+  grid-area:1/1;width:var(--shell);margin-inline:auto;opacity:0;
+}
+.beat .box{max-width:432px;color:var(--paper)}
+.beat.r .box{margin-left:auto}
+.beat .eyebrow{color:var(--gold-on-cobalt)}
+.beat h2{font-size:clamp(30px,3.9vw,50px);margin:16px 0 16px}
+.beat p{font-size:16.5px;color:#CBD4EA;max-width:40ch}
+.beat p+p{margin-top:11px}
+.rule{height:1px;background:var(--gold-on-cobalt);width:64px;transform-origin:left;margin-top:22px}
+
+.dots{position:absolute;right:max(3vw,20px);top:50%;transform:translateY(-50%);z-index:7;display:grid;gap:14px}
+.dots span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.26);transition:background .3s ease,transform .3s ease}
+.dots span.on{background:var(--gold-on-cobalt);transform:scale(1.5)}
+
+/* ---- spec ---- */
+.spec{padding:clamp(84px,11vw,148px) 0;background:var(--paper-warm)}
+.spec h2{font-size:clamp(32px,4.6vw,56px);max-width:17ch;margin-bottom:16px}
+.spec .lead{color:var(--mist);max-width:48ch;margin-bottom:56px}
+.spec dl{display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));background:var(--hair);border-block:1px solid var(--hair)}
+.spec div{background:var(--paper-warm);padding:28px 26px 32px}
+.spec dt{font-family:Archivo;font-weight:800;font-variation-settings:"wdth" 106;font-size:19px;margin-bottom:8px}
+.spec dd{font-size:14.5px;color:var(--mist);line-height:1.55}
+
+/* ---- buy ---- */
+.buy{padding:clamp(84px,11vw,148px) 0;background:var(--paper)}
+.buy-grid{display:grid;gap:clamp(40px,6vw,80px);grid-template-columns:1.02fr .98fr;align-items:start}
+.buy h2{font-size:clamp(34px,5.2vw,64px);max-width:12ch}
+.buy .lead{margin-top:22px;color:var(--mist);max-width:42ch;font-size:17.5px}
+form{margin-top:36px;max-width:430px}
+.field+.field{margin-top:16px}
+label{display:block;font-family:Archivo;font-weight:700;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;color:var(--cobalt)}
+input{
+  width:100%;min-height:54px;padding:15px 0;font:inherit;font-size:16.5px;color:var(--ink);
+  background:transparent;border:0;border-bottom:1.5px solid var(--hair);border-radius:0;
+  transition:border-color .2s ease;
+}
+input::placeholder{color:#5F6C8C}
+input:hover,input:focus{border-bottom-color:var(--cobalt)}
+form .btn{margin-top:28px}
+.note{font-size:13.5px;color:var(--mist);margin-top:16px;line-height:1.55}
+.msg{display:none;margin-top:20px;padding:16px 18px;background:var(--paper-warm);border-left:2px solid var(--rust);font-size:15.5px}
+.msg.on{display:block}
+.aside{border-top:1.5px solid var(--ink);padding-top:26px}
+.aside h3{font-size:23px;margin-bottom:12px}
+.aside p{font-size:15.5px;color:var(--mist)}
+.slot{margin-top:28px;padding:26px;background:var(--paper-warm)}
+.slot .k{font-family:Archivo;font-weight:800;font-size:15px;display:block;margin-bottom:8px}
+.slot p{font-size:14.5px;margin-bottom:20px}
+
+/* ---- footer ---- */
+footer{background:var(--ink);color:var(--paper);padding:clamp(64px,8vw,104px) 0 36px}
+.f-grid{display:grid;gap:40px;grid-template-columns:1.5fr 1fr 1fr}
+footer .mark{color:var(--paper);font-size:28px;margin-bottom:14px}
+footer p{color:#9EABC8;max-width:32ch;font-size:15px}
+footer h4{font-family:Archivo;font-weight:800;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px;color:var(--gold-on-cobalt)}
+footer ul{list-style:none;display:grid}
+footer li a{font-size:15px;text-decoration:none;color:#C6D0E6;display:inline-block;padding:10px 0;min-height:44px}
+footer li a:hover{color:var(--paper)}
+.f-end{margin-top:56px;padding-top:22px;border-top:1px solid rgba(255,255,255,.16);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13px;color:#8B99B8}
+
+.rise{opacity:0}
+
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-copy{padding:132px 0 56px;width:var(--shell);margin-inline:auto;max-width:none}
+  .hero-shot{height:56vh}
+  .hero-shot::after{background:linear-gradient(180deg,var(--cobalt) 0%,transparent 26%)}
+  .scroll-hint{display:none}
+  .buy-grid{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .f-grid>:first-child{grid-column:1/-1}
+}
+@media (max-width:760px){
+  :root{--shell:min(1240px,100% - 36px)}
+  nav a{display:none}
+  nav .btn{margin-left:auto;padding:12px 18px}
+  .track{height:560vh}
+  .beat .box{max-width:none}
+  .beat.r .box{margin-left:0}
+  .beats{align-content:start;padding-top:14vh}
+  .travel{width:clamp(140px,38vw,200px);margin:6vh 0 0 -19vw}
+  .travel figcaption span+span{display:none}
+  .travel figcaption{justify-content:center}
+  .dots{right:14px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .track{height:auto}
+  .stage{position:static;height:auto;padding:0}
+  .plate{position:relative;inset:auto;opacity:1;height:44vh}
+  .plate:not(:first-of-type){margin-top:0}
+  .travel{position:static;margin:36px auto;width:190px}
+  .beats{position:static;display:block;padding:0}
+  .beat{width:var(--shell);margin-inline:auto;opacity:1;padding:44px 0}
+  .dots{display:none}
+  .rise{opacity:1}
+  h1 .w{transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<p class="demo">Concept demo built by Grand Nash Studio for RALLY. <b>Not a live site</b> — imagery is placeholder, and the signup form is not connected.</p>
+
+<header id="hdr">
+  <div class="shell bar">
+    <a href="#top" class="mark">RALLY</a>
+    <nav>
+      <a href="#story">The coconut</a>
+      <a href="#spec">What's in it</a>
+      <a href="#buy">Where to buy</a>
+      <a href="#buy" class="btn pale">Get notified</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow rise">Launching in Los Angeles</span>
+    <h1 id="hl"><span class="ln">Not coconut water.</span><em class="ln">King coconut water.</em></h1>
+    <p class="rise">One ingredient, from the Coconut Triangle in Sri Lanka. The orange coconut they call thambili, pressed and sealed in glass at the source.</p>
+    <div class="hero-cta rise">
+      <a href="#buy" class="btn pale">Find a bottle</a>
+      <a href="#story" class="btn line" style="color:var(--paper);border-color:rgba(255,255,255,.45)">See how it's made</a>
+    </div>
+  </div>
+  <div class="hero-shot">
+    <img id="heroimg" alt="A 350ml glass bottle of RALLY king coconut water on a cream studio backdrop" width="2528" height="1696">
+  </div>
+  <div class="scroll-hint"><i id="hintline"></i> Scroll</div>
+</section>
+
+<section class="story" id="story">
+  <div class="track" id="track">
+    <div class="stage" id="stage">
+
+      <div class="plate" data-plate="0"><img alt="King coconuts with bright orange husks, one sliced open" width="2400" height="1792"></div>
+      <div class="plate" data-plate="1"><img alt="Clear coconut water poured into a glass" width="1856" height="2304"></div>
+      <div class="plate" data-plate="2"><img alt="A RALLY bottle in daylight" width="2528" height="1696"></div>
+      <div class="plate" data-plate="3"><img alt="Rows of coconut palms on the coastal plain of north west Sri Lanka" width="2752" height="1536"></div>
+
+      <div class="travel" id="travel">
+        <figure>
+          <img alt="RALLY king coconut water bottle, 350ml glass" width="1856" height="2304">
+          <figcaption><span>350ml glass</span><span>Single ingredient</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="beats" id="beats">
+        <div class="beat" data-beat="0">
+          <div class="box">
+            <span class="eyebrow">The orange one</span>
+            <h2>Thambili, not the green kind.</h2>
+            <p>King coconut is its own variety, native to Sri Lanka. Shorter tree, bright orange husk, and a water that arrives sweet without help.</p>
+            <p>It is what people there actually drink, opened in front of you at the roadside.</p>
+            <div class="rule"></div>
+          </div>
+        </div>
+        <div class="beat r" data-beat="1">
+          <div class="box">
+            <span class="eyebrow">The ingredient list</span>
+            <h2>One line long.</h2>
+            <p>King coconut water. That is all of it. No added sugar, no preservatives, nothing reconstituted from concentrate somewhere else.</p>
+            <div class="rule"></div>
+          </div>
+        </div>
+        <div class="beat" data-beat="2">
+          <div class="box">
+            <span class="eyebrow">The bottle</span>
+            <h2>Glass, on purpose.</h2>
+            <p>Plastic ships cheaper and stacks easier. Glass means the water never sits against plastic on its way from Sri Lanka to your fridge.</p>
+            <p>350ml. Gold cap. Meant to be drunk cold.</p>
+            <div class="rule"></div>
+          </div>
+        </div>
+        <div class="beat r" data-beat="3">
+          <div class="box">
+            <span class="eyebrow">The source</span>
+            <h2>The Coconut Triangle.</h2>
+            <p>The belt of coastal plain and plantation between Puttalam, Kurunegala and Gampaha, in Sri Lanka's north west. It grows more than half the country's coconuts.</p>
+            <p>Sourced, pasteurised and bottled there, so it leaves the island finished.</p>
+            <div class="rule"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dots" id="dots" aria-hidden="true">
+        <span class="on"></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="spec" id="spec">
+  <div class="shell">
+    <h2 class="rise">Everything on the label, and nothing that isn't.</h2>
+    <p class="lead rise">Single origin, single ingredient, sealed at source.</p>
+    <dl>
+      <div class="rise"><dt>One ingredient</dt><dd>King coconut water. Nothing added, nothing taken out.</dd></div>
+      <div class="rise"><dt>No added sugar</dt><dd>No sweeteners, no syrups, no concentrate.</dd></div>
+      <div class="rise"><dt>No preservatives</dt><dd>Pasteurised, not chemically stabilised.</dd></div>
+      <div class="rise"><dt>Glass, 350ml</dt><dd>11.8 fl oz. No plastic contact at any point.</dd></div>
+      <div class="rise"><dt>Certified</dt><dd>Organic, kosher and halal. Non-GMO.</dd></div>
+      <div class="rise"><dt>Single origin</dt><dd>Sri Lanka's Coconut Triangle.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="buy" id="buy">
+  <div class="shell buy-grid">
+    <div>
+      <h2 class="rise">Where to find a cold one.</h2>
+      <p class="lead rise">RALLY is launching in Los Angeles. Leave a zip and we will tell you the day it reaches a shelf near you.</p>
+      <form id="notify" class="rise" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="zip">Zip code</label>
+          <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="90026" required>
+        </div>
+        <button type="submit" class="btn">Tell me when it's near me</button>
+        <p class="note">Used only to email you about RALLY reaching your area.</p>
+        <p class="msg" id="msg" role="status"></p>
+      </form>
+    </div>
+    <div class="aside rise">
+      <h3>Stockists</h3>
+      <p>RALLY is new. Rather than pad this page with logos it does not have yet, here is the honest version: retail partners are being confirmed, and this list goes live the day the first one does.</p>
+      <div class="slot">
+        <span class="k">Nothing near you yet?</span>
+        <p>The fastest route onto a shelf is a customer asking for it. Tell us your local shop and we will follow up with them directly.</p>
+        <a href="#notify" class="btn line">Ask my store to carry it</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="f-grid">
+      <div>
+        <span class="mark">RALLY</span>
+        <p>Single-ingredient king coconut water from Sri Lanka's Coconut Triangle, bottled in glass. Launching in Los Angeles.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#story">The coconut</a></li>
+          <li><a href="#spec">What's in it</a></li>
+          <li><a href="#buy">Where to buy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/rallycoconutwater/" rel="noopener">Instagram</a></li>
+          <li><a href="#buy">Launch updates</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-end">
+      <span>&copy; 2026 RALLY. Concept demo, not a live store.</span>
+      <span>Shake. Chill. Rally.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="anime.umd.min.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- imagery ----------------
+     Generated stand-ins served from a CDN. Download these into ./img/ and swap
+     the BASE below to "img/" before launch — see UPDATING.md. */
+  var BASE = "https://d8j0ntlcm91z4.cloudfront.net/user_3GQxSpaot112vCMcnMULpxTxIRr/hf_20260818_083248_";
+  var SHOTS = {
+    hero:       "07d8c1fd-e62b-46de-a070-87cbc149e817.png",
+    bottle:     "106769cc-4d97-404a-a06f-bc1b73c13834.png",
+    coconuts:   "9c089447-bf18-4948-9630-2fe17d7dcbd5.png",
+    plantation: "09e05b66-aaf3-4ebb-b24d-b9b4b82b147f.png",
+    pour:       "02299974-7e4c-4d5f-98d2-fbfee58fedb4.png"
+  };
+  function src(k){ return BASE + SHOTS[k]; }
+
+  /* mark the frame so a blocked or offline photo degrades to a labelled panel */
+  function guard(img, label){
+    img.addEventListener("error", function(){
+      img.classList.add("missing");
+      var frame = img.closest(".plate, .hero-shot, .travel figure") || img.parentNode;
+      frame.classList.add("miss");
+      frame.setAttribute("data-shot", label + " — image unavailable");
+    });
+  }
+
+  var heroImg = document.getElementById("heroimg");
+  guard(heroImg, "Hero product shot"); heroImg.src = src("hero");
+
+  var travelImg = document.querySelector("#travel img");
+  guard(travelImg, "Bottle"); travelImg.src = src("bottle");
+  var plateShots = ["coconuts","pour","hero","plantation"];
+  document.querySelectorAll(".plate img").forEach(function(img,i){
+    guard(img, plateShots[i]);
+    img.src = src(plateShots[i]);
+    img.loading = i > 1 ? "lazy" : "eager";
+  });
+
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)");
+  if (reduce.matches) return;
+
+  var A = window.anime;
+  var animate = A.animate, createTimeline = A.createTimeline, onScroll = A.onScroll,
+      stagger = A.stagger, splitText = A.splitText, utils = A.utils;
+
+  /* ---------------- hero ---------------- */
+  var split = splitText("#hl", { words: { wrap: "clip" }, chars: false });
+
+  var intro = createTimeline({ defaults: { ease: "outExpo" } });
+  intro
+    .add(split.words, {
+      y: ["105%", "0%"],
+      duration: 1100,
+      delay: stagger(52)
+    }, 240)
+    .add(".hero .eyebrow", { opacity: [0,1], y: [14,0], duration: 700 }, 120)
+    .add(".hero p", { opacity: [0,1], y: [18,0], duration: 900 }, 620)
+    .add(".hero-cta", { opacity: [0,1], y: [18,0], duration: 900 }, 740)
+    .add("#heroimg", { scale: [1.12,1], opacity: [0,1], duration: 1600, ease: "outQuart" }, 0)
+    .add("#hintline", { scaleX: [0,1], duration: 900 }, 1000);
+
+  /* header: transparent over the hero, pale over the light sections,
+     smoked glass over the dark story so it never fights the photography */
+  var hdr = document.getElementById("hdr");
+  var storyEl = document.getElementById("story");
+  var lastCls = "";
+  function paintHeader(){
+    var r = storyEl.getBoundingClientRect();
+    var cls = (scrollY > 40 ? "stuck" : "") + (r.top <= 70 && r.bottom > 70 ? " dark" : "");
+    if (cls !== lastCls){ hdr.className = lastCls = cls; }
+  }
+  addEventListener("scroll", paintHeader, { passive: true });
+  addEventListener("resize", paintHeader);
+  paintHeader();
+
+  /* ---------------- the scroll story ----------------
+     One scrubbed timeline. The bottle holds the centre and breathes;
+     full-bleed plates cross-dissolve behind it; the copy hands off beat to beat. */
+  var plates = utils.$(".plate");
+  var beats  = utils.$(".beat");
+  var dots   = utils.$("#dots span");
+  var N      = beats.length;
+
+  var story = createTimeline({
+    defaults: { ease: "inOutQuad" },
+    autoplay: onScroll({
+      target: "#track",
+      enter: "top top",
+      leave: "bottom bottom",
+      sync: 0.55,
+      onUpdate: function(o){
+        var i = Math.min(N - 1, Math.floor(o.progress * N));
+        for (var d = 0; d < dots.length; d++) dots[d].classList.toggle("on", d === i);
+      }
+    })
+  });
+
+  var STEP = 1000;                    // one beat of timeline
+  var SPAN = STEP * N;
+
+  /* bottle: a slow drift and a slight turn across the whole story, no tumbling */
+  story.add("#travel", {
+    y:      [{ to: "-6vh" }, { to: "4vh" }, { to: "-3vh" }, { to: "2vh" }],
+    scale:  [{ to: 1.06 },   { to: .94 },   { to: 1.1 },    { to: .98 }],
+    rotate: [{ to: "-3deg" },{ to: "2deg" },{ to: "-1.5deg" },{ to: "1deg" }],
+    duration: SPAN,
+    ease: "inOutSine"
+  }, 0);
+
+  /* plates cross-dissolve with a slow push in */
+  utils.set(plates[0], { opacity: 1 });
+  plates.forEach(function(pl, i){
+    var at = i * STEP;
+    if (i > 0) story.add(pl, { opacity: [0,1], duration: STEP * .55, ease: "linear" }, at - STEP * .3);
+    story.add(pl.querySelector("img"), { scale: [1.16, 1.02], duration: STEP * 2, ease: "linear" }, at - STEP * .5);
+  });
+
+  /* copy hands off, with the hairline rule drawing under each heading */
+  utils.set(beats[0], { opacity: 1 });
+  beats.forEach(function(bt, i){
+    var at = i * STEP;
+    if (i > 0) story.add(bt, { opacity: [0,1], duration: STEP * .12, ease: "linear" }, at - STEP * .1);
+    if (i < N - 1) story.add(bt, { opacity: [1,0], duration: STEP * .12, ease: "linear" }, at + STEP * .88);
+    story
+      .add(bt.querySelector(".box"), { y: [34,0], duration: STEP * .5, ease: "outExpo" }, at - STEP * .1)
+      .add(bt.querySelector(".rule"), { scaleX: [0,1], duration: STEP * .45, ease: "outExpo" }, at);
+  });
+
+  /* ---------------- section reveals ---------------- */
+  utils.$(".rise").forEach(function(el){
+    animate(el, {
+      opacity: [0,1],
+      y: [22,0],
+      duration: 850,
+      ease: "outExpo",
+      autoplay: onScroll({ target: el, enter: "bottom-=90 bottom" })
+    });
+  });
+
+  animate(".spec dl > div", {
+    opacity: [0,1],
+    y: [18,0],
+    duration: 700,
+    ease: "outExpo",
+    delay: stagger(60),
+    autoplay: onScroll({ target: ".spec dl", enter: "bottom-=60 bottom" })
+  });
+})();
+</script>
+<script>
+/* front-end only: validates and confirms, sends nothing */
+(function(){
+  var form = document.getElementById("notify");
+  var msg  = document.getElementById("msg");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = document.getElementById("email"), zip = document.getElementById("zip");
+    if (!email.value.trim() || email.value.indexOf("@") < 1){
+      msg.textContent = "Add an email address so we can reach you.";
+      msg.classList.add("on"); email.focus(); return;
+    }
+    if (!zip.value.trim()){
+      msg.textContent = "Add a zip code so we know which shelves to watch.";
+      msg.classList.add("on"); zip.focus(); return;
+    }
+    msg.textContent = "You're on the list. This is a demo, so nothing was sent — on the live site this would email you when RALLY reaches " + zip.value.trim() + ".";
+    msg.classList.add("on");
+    form.reset();
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Product",
+ "name":"RALLY Organic King Coconut Water",
+ "description":"Single-ingredient king coconut water sourced from Sri Lanka's Coconut Triangle and bottled in glass. No added sugar, no preservatives.",
+ "brand":{"@type":"Brand","name":"RALLY"},
+ "countryOfOrigin":"LK",
+ "material":"Glass",
+ "size":"350 ml"
+}
+</script>
+</body>
+</html>
