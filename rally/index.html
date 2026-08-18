@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>RALLY — King Coconut Water from Sri Lanka's Coconut Triangle</title>
+<meta name="description" content="RALLY is single-ingredient king coconut water, sourced from Sri Lanka's Coconut Triangle and bottled in glass. No added sugar, no preservatives. Launching in Los Angeles.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RALLY — Not coconut water. King coconut water.">
+<meta property="og:description" content="Single-ingredient king coconut water from Sri Lanka's Coconut Triangle, bottled in glass. Launching in Los Angeles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalt:#1B3C96;
+  --cobalt-deep:#10245C;
+  --sea:#2E9CB8;
+  --sea-pale:#7FCBDA;
+  --sand:#E9DABE;
+  --sand-deep:#D6C199;
+  --cream:#F6F1E5;
+  --coral:#E9603F;
+  --coral-ink:#B83A18;
+  --yellow:#F5B72C;
+  --ink:#10245C;
+  --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:Archivo,Inter,sans-serif;font-weight:800;letter-spacing:-.025em;line-height:.98}
+a{color:inherit}
+img,svg{max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* focus */
+a:focus-visible,button:focus-visible,input:focus-visible{
+  outline:3px solid var(--coral-ink);outline-offset:3px;border-radius:2px;
+}
+
+/* ---------- demo marker ---------- */
+.demo-bar{
+  background:var(--ink);color:var(--cream);font-size:13px;line-height:1.45;
+  padding:9px 24px;text-align:center;font-weight:500;
+}
+.demo-bar b{color:var(--yellow);font-weight:600}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:60;background:rgba(246,241,229,.92);
+  backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid rgba(16,36,92,.12);
+}
+.bar{display:flex;align-items:center;gap:20px;height:64px}
+.mark{font-family:Archivo;font-weight:900;font-size:23px;letter-spacing:.06em;color:var(--cobalt);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+nav{margin-left:auto;display:flex;gap:26px;align-items:center}
+nav a{font-size:14px;font-weight:500;text-decoration:none;color:var(--ink);opacity:.75;display:inline-flex;align-items:center;min-height:44px}
+nav a:hover{opacity:1}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:12px 22px;border-radius:999px;
+  font-family:Archivo;font-weight:700;font-size:15px;letter-spacing:.01em;
+  text-decoration:none;border:2px solid var(--cobalt);cursor:pointer;
+  background:var(--cobalt);color:var(--cream);
+  transition:transform .15s ease,background .15s ease;
+}
+.btn:hover{transform:translateY(-1px);background:var(--cobalt-deep);border-color:var(--cobalt-deep)}
+.btn.ghost{background:transparent;color:var(--cobalt)}
+.btn.ghost:hover{background:var(--cobalt);color:var(--cream)}
+.btn.coral{background:var(--coral-ink);border-color:var(--coral-ink);color:#fff}
+.btn.coral:hover{background:#9C2F12;border-color:#9C2F12}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:var(--cobalt);color:var(--cream);isolation:isolate}
+.hero-sky{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,#0E2570 0%,var(--cobalt) 54%,#2F5FA8 80%,var(--sea) 100%)}
+.hero .wrap{position:relative;padding-top:88px;padding-bottom:0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:Archivo;font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--yellow);margin-bottom:24px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--yellow)}
+h1{font-size:clamp(44px,9.2vw,104px);font-weight:900;max-width:16ch}
+h1 .alt{color:var(--yellow);display:block}
+.lede{font-size:clamp(17px,2.1vw,20px);max-width:52ch;margin-top:26px;color:#F0F4FD;line-height:1.55}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.hero-cta .btn{border-color:var(--cream)}
+.hero-cta .btn.solid{background:var(--cream);color:var(--cobalt)}
+.hero-cta .btn.solid:hover{background:var(--yellow);border-color:var(--yellow);color:var(--cobalt-deep)}
+.hero-cta .btn.line{background:transparent;color:var(--cream)}
+.hero-cta .btn.line:hover{background:rgba(255,255,255,.14)}
+.hero-scene{position:relative;margin-top:56px;height:230px}
+.hero-sea{position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:200vw;height:230px}
+.hero-note{
+  position:absolute;left:0;bottom:26px;z-index:3;font-size:13px;color:#F0F4FD;
+  display:flex;align-items:center;gap:9px;font-weight:500;
+}
+.hero-note svg{flex:none}
+
+/* ---------- scroll story ---------- */
+.story{position:relative;background:var(--sea)}
+.story-track{height:460vh}
+.stage{
+  position:sticky;top:0;height:100vh;overflow:hidden;
+  display:block;
+}
+.stage-bg{position:absolute;inset:0}
+.stage-sky{position:absolute;left:0;right:0;top:0;height:28%;background:linear-gradient(180deg,#12297A 0%,var(--cobalt) 42%,#5E92CB 82%,#8FBEDD 100%)}
+.stage-sea{position:absolute;left:0;right:0;top:28%;height:26%;background:linear-gradient(180deg,#3FA6BE 0%,var(--sea) 34%,#22809D 100%)}
+.stage-sand{position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(180deg,var(--sand) 0%,var(--sand-deep) 100%)}
+.stage-foam{position:absolute;left:-2vw;right:-2vw;top:51%;height:70px}
+.stage-palms{position:absolute;right:4%;bottom:71.6%;width:min(232px,26vw);opacity:.42}
+.stage-palms svg{display:block;width:100%;height:auto}
+
+.panels{position:absolute;inset:0;z-index:6;pointer-events:none}
+.panel{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  display:flex;align-items:center;
+  opacity:0;transition:opacity .34s ease;
+}
+.panel.on{opacity:1}
+.panel .wrap{width:100%}
+.card{
+  max-width:430px;background:var(--cream);color:var(--ink);
+  padding:32px 34px;border-radius:4px;
+  box-shadow:0 22px 50px -28px rgba(8,20,52,.55);
+  pointer-events:auto;
+}
+.panel.right .card{margin-left:auto}
+.card .num{
+  font-family:Archivo;font-weight:800;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--coral-ink);display:block;margin-bottom:14px;
+}
+.card h2{font-size:clamp(30px,4.4vw,44px);margin-bottom:14px}
+.card p{font-size:16.5px;color:#2C3F70;line-height:1.62}
+.card p+p{margin-top:12px}
+.card .tag{
+  display:inline-block;margin-top:18px;font-family:Archivo;font-weight:700;
+  font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--yellow);color:var(--cobalt-deep);padding:7px 13px;border-radius:999px;
+}
+
+/* rolling bottle */
+.roller{
+  position:absolute;z-index:5;
+  left:0;top:0;width:196px;
+  will-change:transform;
+}
+.roller svg{display:block;width:100%;height:auto;filter:drop-shadow(0 16px 22px rgba(10,28,64,.32))}
+.coconuts{
+  position:absolute;z-index:4;bottom:9%;left:8%;width:290px;
+  opacity:0;transform:translateY(22px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.coconuts.show{opacity:1;transform:none}
+.coconuts svg{display:block;width:100%;height:auto;filter:drop-shadow(0 12px 16px rgba(10,28,64,.28))}
+.coconuts.tapped .cnut-a{animation:knock .62s cubic-bezier(.3,1.5,.5,1)}
+.coconuts.tapped .cnut-b{animation:knock .62s cubic-bezier(.3,1.5,.5,1) .06s}
+.coconuts.tapped .cnut-c{animation:knock .62s cubic-bezier(.3,1.5,.5,1) .12s}
+@keyframes knock{
+  0%{transform:translateX(0) rotate(0)}
+  35%{transform:translateX(11px) rotate(7deg)}
+  70%{transform:translateX(-3px) rotate(-2deg)}
+  100%{transform:translateX(0) rotate(0)}
+}
+.cnut-a,.cnut-b,.cnut-c{transform-box:fill-box;transform-origin:bottom center}
+
+.progress{
+  position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(16,36,92,.14);z-index:8;
+}
+.progress i{display:block;height:100%;width:0;background:var(--coral)}
+
+/* ---------- proof strip ---------- */
+.strip{background:var(--cobalt);color:var(--cream);padding:56px 0}
+.strip ul{list-style:none;display:grid;gap:2px;grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
+.strip li{padding:22px 20px;background:rgba(255,255,255,.055);border-radius:3px}
+.strip .k{font-family:Archivo;font-weight:800;font-size:19px;display:block;margin-bottom:5px}
+.strip .v{font-size:13.5px;color:#C7D6F0;line-height:1.45}
+.strip h2{font-size:clamp(28px,4vw,40px);margin-bottom:28px;max-width:20ch}
+.strip h2 em{font-style:normal;color:var(--yellow)}
+
+/* ---------- where to buy ---------- */
+.buy{padding:96px 0;background:var(--cream)}
+.buy-grid{display:grid;gap:52px;grid-template-columns:1.05fr .95fr;align-items:start}
+.buy h2{font-size:clamp(34px,5.4vw,58px);max-width:14ch}
+.buy .sub{margin-top:20px;font-size:17.5px;color:#3A4E7E;max-width:44ch}
+form{margin-top:30px;max-width:440px}
+.field{margin-bottom:16px}
+label{display:block;font-family:Archivo;font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;color:var(--cobalt)}
+input{
+  width:100%;min-height:52px;padding:14px 16px;font:inherit;font-size:16px;
+  background:#fff;color:var(--ink);
+  border:2px solid rgba(16,36,92,.22);border-radius:3px;
+}
+input:hover{border-color:rgba(16,36,92,.4)}
+.form-note{font-size:13.5px;color:#5A6B93;margin-top:12px;line-height:1.5}
+.form-msg{
+  display:none;margin-top:18px;padding:16px 18px;border-left:4px solid var(--coral-ink);
+  background:#fff;font-size:15.5px;
+}
+.form-msg.on{display:block}
+.stockists{background:#fff;padding:34px;border-radius:4px;border:1px solid rgba(16,36,92,.13)}
+.stockists h3{font-size:22px;margin-bottom:12px}
+.stockists p{font-size:15.5px;color:#3A4E7E}
+.empty{
+  margin-top:22px;padding:22px;border:2px dashed rgba(16,36,92,.24);border-radius:4px;
+  background:var(--cream);
+}
+.empty .k{font-family:Archivo;font-weight:800;font-size:15px;display:block;margin-bottom:7px}
+.empty p{font-size:14.5px;color:#4A5C88;margin-bottom:16px}
+
+/* ---------- footer ---------- */
+footer{position:relative;background:var(--sand-deep);color:var(--cobalt-deep);padding:74px 0 34px;overflow:hidden}
+.f-grid{display:grid;gap:36px;grid-template-columns:1.4fr 1fr 1fr;position:relative;z-index:2}
+footer .mark{font-size:30px;display:inline-block;margin-bottom:12px}
+footer p{font-size:15px;color:#2A3D6E;max-width:34ch}
+footer h4{font-family:Archivo;font-weight:800;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:2px}
+footer li a{font-size:15px;text-decoration:none;color:#2A3D6E;display:inline-block;padding:11px 0;min-height:44px}
+footer li a:hover{text-decoration:underline}
+.f-base{
+  margin-top:52px;padding-top:22px;border-top:1px solid rgba(16,36,92,.22);
+  font-size:13px;color:#3C4E7C;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;
+  position:relative;z-index:2;
+}
+
+@media (max-width:900px){
+  .buy-grid{grid-template-columns:1fr;gap:38px}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .f-grid > :first-child{grid-column:1/-1}
+}
+@media (max-width:760px){
+  nav a{display:none}
+  nav .btn{margin-left:auto}
+  .hero .wrap{padding-top:56px}
+  .hero-scene{height:150px;margin-top:40px}
+  .hero-sea{height:150px}
+  .story-track{height:520vh}
+  .card{padding:24px 22px;max-width:none}
+  .panel{align-items:flex-start;padding-top:9vh}
+  .panel.right .card{margin-left:0}
+  .roller{width:114px}
+  .coconuts{width:190px;bottom:6%;left:6%}
+}
+@media (max-width:420px){
+  body{font-size:16px}
+  .card h2{font-size:27px}
+  .roller{width:98px}
+  .coconuts{width:158px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .story-track{height:auto}
+  .stage{position:static;height:auto;padding:64px 0}
+  .panels{position:static;inset:auto}
+  .panel{position:static;opacity:1;padding:22px 0}
+  .panel .card{max-width:640px;margin:0 auto!important}
+  .roller{position:static;margin:0 auto 34px;transform:none!important;width:150px}
+  .coconuts{position:static;margin:34px auto 0;opacity:1;transform:none}
+  .progress{display:none}
+}
+</style>
+</head>
+<body>
+
+<p class="demo-bar">Concept demo built by Grand Nash Studio for RALLY. <b>Not a live site</b> — contact details, retailers and the signup form are placeholders.</p>
+
+<header>
+  <div class="wrap bar">
+    <a href="#top" class="mark">RALLY</a>
+    <nav>
+      <a href="#king">The king coconut</a>
+      <a href="#glass">Why glass</a>
+      <a href="#buy">Where to buy</a>
+      <a href="#buy" class="btn">Get notified</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-sky" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">Launching in Los Angeles</span>
+    <h1>Not coconut water.<span class="alt">King coconut water.</span></h1>
+    <p class="lede">One ingredient, straight from Sri Lanka's Coconut Triangle. The orange coconut locals call thambili, pressed and sealed in glass at the source. No added sugar. No preservatives. Nothing else in the bottle.</p>
+    <div class="hero-cta">
+      <a href="#buy" class="btn solid">Find a bottle</a>
+      <a href="#king" class="btn line">Scroll the story</a>
+    </div>
+  </div>
+  <div class="hero-scene">
+    <svg class="hero-sea" viewBox="0 0 1600 230" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path d="M0,66 C220,26 380,102 610,72 C840,42 1010,104 1240,74 C1400,53 1500,72 1600,62 L1600,230 L0,230 Z" fill="#2E9CB8"/>
+      <path d="M0,110 C240,78 400,142 640,116 C880,90 1050,146 1290,120 C1430,105 1520,118 1600,110 L1600,230 L0,230 Z" fill="#2789A6" opacity=".85"/>
+      <path d="M0,158 C260,132 420,186 680,164 C940,142 1120,190 1360,170 C1470,161 1540,168 1600,163 L1600,230 L0,230 Z" fill="#E9DABE"/>
+    </svg>
+    <p class="hero-note">
+      <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="none" stroke="#F5B72C" stroke-width="1.6"/><path d="M8 4.4v4.2l2.6 1.6" fill="none" stroke="#F5B72C" stroke-width="1.6" stroke-linecap="round"/></svg>
+      350ml glass · organic · kosher · halal
+    </p>
+  </div>
+</section>
+
+<!-- ============ SCROLL STORY ============ -->
+<section class="story" id="king" aria-label="How RALLY is made">
+  <div class="story-track" id="track">
+    <div class="stage" id="stage">
+      <div class="stage-bg" aria-hidden="true">
+        <div class="stage-sky"></div>
+        <div class="stage-sea"></div>
+        <div class="stage-sand"></div>
+        <svg class="stage-foam" viewBox="0 0 1600 70" preserveAspectRatio="none" focusable="false">
+          <path d="M0,34 C230,6 420,58 660,36 C900,14 1080,60 1330,40 C1450,30 1530,40 1600,34 L1600,70 L0,70 Z" fill="#E9DABE"/>
+          <path d="M0,44 C210,26 400,62 640,46 C880,30 1070,66 1320,50 C1450,42 1530,50 1600,46 L1600,70 L0,70 Z" fill="#F3E9D6" opacity=".7"/>
+        </svg>
+        <div class="stage-palms">
+          <svg viewBox="0 0 320 120" focusable="false">
+            <g fill="#12406B">
+              <path d="M96 118 C94 88 92 66 88 44 l7 -1 c4 22 6 45 8 75 z"/>
+              <path d="M92 44 c-16 -13 -32 -14 -44 -6 14 -2 28 2 40 10 z M92 44 c14 -16 30 -20 44 -14 -14 1 -29 7 -40 18 z M92 44 c-6 -18 -2 -33 8 -41 -4 13 -4 26 -1 39 z M92 44 c-18 4 -30 14 -34 27 9 -11 21 -20 36 -23 z M92 44 c17 6 27 17 30 30 -8 -12 -19 -21 -33 -25 z"/>
+              <path d="M212 119 C211 94 210 74 207 55 l6 -1 c3 19 4 40 5 65 z"/>
+              <path d="M210 55 c-13 -11 -26 -12 -36 -5 12 -2 23 2 33 8 z M210 55 c11 -13 24 -16 36 -11 -12 1 -24 6 -33 15 z M210 55 c-5 -15 -2 -27 7 -33 -4 10 -4 21 -1 32 z M210 55 c-15 3 -25 11 -28 22 7 -9 17 -16 29 -19 z"/>
+              <path d="M262 119 c-1 -18 -2 -32 -4 -46 l5 -1 c2 14 3 29 4 47 z"/>
+              <path d="M259 73 c-10 -8 -20 -9 -27 -4 9 -1 17 1 25 6 z M259 73 c8 -10 18 -12 27 -8 -9 0 -18 5 -25 11 z M259 73 c-4 -11 -1 -20 5 -25 -3 8 -3 16 -1 24 z"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- buried king coconuts -->
+      <div class="coconuts" id="coconuts" aria-hidden="true">
+        <svg viewBox="0 0 300 150" focusable="false">
+          <ellipse cx="150" cy="132" rx="140" ry="15" fill="#C9B187" opacity=".55"/>
+          <g class="cnut-c">
+            <ellipse cx="222" cy="106" rx="46" ry="42" fill="#D9752E"/>
+            <ellipse cx="208" cy="94" rx="17" ry="14" fill="#EE9A4C" opacity=".75"/>
+            <path d="M222 64 q5 -14 -2 -22" stroke="#8A5A22" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </g>
+          <g class="cnut-b">
+            <ellipse cx="86" cy="102" rx="50" ry="46" fill="#E08B33"/>
+            <ellipse cx="70" cy="88" rx="19" ry="15" fill="#F5AE5C" opacity=".72"/>
+            <path d="M86 56 q6 -15 -2 -24" stroke="#8A5A22" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </g>
+          <g class="cnut-a">
+            <ellipse cx="152" cy="112" rx="56" ry="51" fill="#EF9A38"/>
+            <ellipse cx="133" cy="95" rx="22" ry="17" fill="#FFC072" opacity=".7"/>
+            <path d="M152 61 q7 -17 -2 -27" stroke="#8A5A22" stroke-width="6" fill="none" stroke-linecap="round"/>
+          </g>
+          <path d="M14 128 q60 -12 128 -3" stroke="#C9B187" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8"/>
+        </svg>
+      </div>
+
+      <!-- the rolling bottle -->
+      <div class="roller" id="roller" aria-hidden="true">
+        <svg viewBox="0 0 130 350" focusable="false">
+          <defs>
+            <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#CFEAF0"/>
+              <stop offset=".3" stop-color="#F2FAFC"/>
+              <stop offset=".62" stop-color="#DCF0F4"/>
+              <stop offset="1" stop-color="#A9D4DE"/>
+            </linearGradient>
+            <linearGradient id="cap" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#C9973A"/>
+              <stop offset=".38" stop-color="#F2D389"/>
+              <stop offset="1" stop-color="#B5822B"/>
+            </linearGradient>
+          </defs>
+          <path d="M30 118 C30 96 46 88 46 72 L46 40 L84 40 L84 72 C84 88 100 96 100 118 L100 316 C100 332 90 340 74 340 L56 340 C40 340 30 332 30 316 Z" fill="url(#glass)"/>
+          <path d="M30 118 C30 96 46 88 46 72 L46 40 L58 40 L58 72 C58 90 44 98 44 120 L44 340 L56 340 C40 340 30 332 30 316 Z" fill="#ffffff" opacity=".55"/>
+          <rect x="42" y="12" width="46" height="34" rx="6" fill="url(#cap)"/>
+          <rect x="42" y="12" width="46" height="6" rx="3" fill="#F7E2AE" opacity=".8"/>
+          <rect x="28" y="150" width="74" height="118" rx="3" fill="#FBF7EE"/>
+          <circle cx="65" cy="196" r="27" fill="#1B3C96"/>
+          <path d="M56 176 q9 -12 18 0" stroke="#F6F1E5" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+          <text x="65" y="203" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-size="15" fill="#F6F1E5" letter-spacing="1">RALLY</text>
+          <text x="65" y="234" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="700" font-size="8.5" fill="#1B3C96" letter-spacing=".7">KING COCONUT</text>
+          <text x="65" y="247" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="700" font-size="8.5" fill="#1B3C96" letter-spacing=".7">WATER</text>
+          <text x="65" y="260" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="600" font-size="6.4" fill="#C2401F" letter-spacing=".5">NO ADDED SUGAR · 350ml</text>
+        </svg>
+      </div>
+
+      <div class="panels">
+        <div class="panel on" data-panel="0">
+          <div class="wrap"><div class="card">
+            <span class="num">01 — The orange one</span>
+            <h2>Thambili, not the green kind.</h2>
+            <p>King coconut is its own variety, native to Sri Lanka and known there as thambili. Bright orange husk, shorter tree, and a water that comes out subtly sweet on its own.</p>
+            <p>It is what people actually drink there, sold by the roadside and opened in front of you.</p>
+          </div></div>
+        </div>
+        <div class="panel right" data-panel="1">
+          <div class="wrap"><div class="card">
+            <span class="num">02 — The ingredient list</span>
+            <h2>One line long.</h2>
+            <p>King coconut water. That is the whole list. No added sugar, no preservatives, no concentrate reconstituted somewhere else.</p>
+            <p>If a coconut water needs a flavour system to taste good, it started out tasting like nothing.</p>
+            <span class="tag">Single ingredient</span>
+          </div></div>
+        </div>
+        <div class="panel" data-panel="2" id="glass">
+          <div class="wrap"><div class="card">
+            <span class="num">03 — The bottle</span>
+            <h2>Glass, on purpose.</h2>
+            <p>Plastic and lined cartons are cheaper to ship and easier to stack. We went with glass so the water is not sitting against plastic between Sri Lanka and your fridge, and so nothing leaches into it on the way.</p>
+            <p>350ml, gold cap, made to be drunk cold.</p>
+          </div></div>
+        </div>
+        <div class="panel right" data-panel="3">
+          <div class="wrap"><div class="card">
+            <span class="num">04 — The source</span>
+            <h2>The Coconut Triangle.</h2>
+            <p>Sourced from the belt of coastal plain and plantation between Puttalam, Kurunegala and Gampaha, in Sri Lanka's north west. It grows more than half the country's coconuts.</p>
+            <p>Sourced, pasteurised and bottled there, so it leaves the island already finished.</p>
+            <span class="tag">Organic · Kosher · Halal</span>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <h2>What is actually <em>in</em> the bottle.</h2>
+    <ul>
+      <li><span class="k">One ingredient</span><span class="v">King coconut water and nothing else.</span></li>
+      <li><span class="k">No added sugar</span><span class="v">No sweeteners, no syrups, no concentrate.</span></li>
+      <li><span class="k">No preservatives</span><span class="v">Pasteurised, not chemically stabilised.</span></li>
+      <li><span class="k">Glass, 350ml</span><span class="v">11.8 fl oz. No plastic contact.</span></li>
+      <li><span class="k">Certified</span><span class="v">Organic, kosher and halal. Non-GMO.</span></li>
+      <li><span class="k">Single origin</span><span class="v">Sri Lanka's Coconut Triangle.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="buy" id="buy">
+  <div class="wrap buy-grid">
+    <div>
+      <h2>Where to find a cold one.</h2>
+      <p class="sub">RALLY is launching in Los Angeles. Drop your zip and we will tell you the moment it lands on a shelf near you.</p>
+      <form id="notify" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="zip">Zip code</label>
+          <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="90026" required>
+        </div>
+        <button type="submit" class="btn coral">Tell me when it's near me</button>
+        <p class="form-note">We will use this to email you about RALLY reaching your area, and nothing else.</p>
+        <p class="form-msg" id="msg" role="status"></p>
+      </form>
+    </div>
+    <div class="stockists">
+      <h3>Stockists</h3>
+      <p>RALLY is brand new. Rather than pad this page with logos, here is the honest version: retail partners are being confirmed now and this list goes live the day the first one does.</p>
+      <div class="empty">
+        <span class="k">Nothing near you yet?</span>
+        <p>The fastest way onto a shelf is a customer asking for it. Send your local shop a note and we will follow up with them directly.</p>
+        <a href="#notify" class="btn ghost">Ask my store to carry it</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <span class="mark">RALLY</span>
+        <p>Single-ingredient king coconut water from Sri Lanka's Coconut Triangle, bottled in glass. Launching in Los Angeles.</p>
+      </div>
+      <div>
+        <h4>The product</h4>
+        <ul>
+          <li><a href="#king">The king coconut</a></li>
+          <li><a href="#glass">Why glass</a></li>
+          <li><a href="#buy">Where to buy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/rallycoconutwater/" rel="noopener">Instagram</a></li>
+          <li><a href="#buy">Get launch updates</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-base">
+      <span>&copy; 2026 RALLY. Concept demo — not a live store.</span>
+      <span>Shake. Chill. Rally.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  var track = document.getElementById("track");
+  var roller = document.getElementById("roller");
+  var coconuts = document.getElementById("coconuts");
+  var bar = document.getElementById("bar");
+  var panels = Array.prototype.slice.call(document.querySelectorAll(".panel"));
+  var stage = document.getElementById("stage");
+
+  var ticking = false, tapped = false;
+
+  var BAND = 0.235;           // one story panel
+  function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+
+  function frame(){
+    ticking = false;
+    if (reduce.matches || !track) return;
+
+    var r = track.getBoundingClientRect();
+    var travel = r.height - window.innerHeight;
+    if (travel <= 0) return;
+    var p = clamp(-r.top / travel, 0, 1);
+
+    bar.style.width = (p*100).toFixed(2) + "%";
+
+    var w = stage.clientWidth;
+    var h = stage.clientHeight;
+    var bw = roller.offsetWidth;
+
+    // horizontal weave across the sand, left -> right -> left -> into the coconuts
+    var margin = Math.max(16, w*0.05);
+    var span = w - bw - margin*2;
+    // swing to the opposite side of whichever card is showing, peaking mid-band
+    var swing = 0.5 + 0.5 * Math.cos((p - BAND/2) / BAND * Math.PI);
+    var lo = w < 760 ? 0.20 : 0.10;
+    var x = margin + span * (lo + (1 - lo*2) * swing);
+
+    var sandTop = h * 0.52;
+    var y = sandTop + h*0.12 - (roller.offsetHeight*0.5) + Math.sin(p*Math.PI*3)*h*0.02;
+
+    // roll angle: always forward, decelerating into the landing
+    var LAND_FROM = 0.74, LAND_SPAN = 0.14;
+    var land = clamp((p - LAND_FROM) / LAND_SPAN, 0, 1);
+    var ease = 1 - Math.pow(1 - land, 2);
+    var rollP = p <= LAND_FROM ? p : LAND_FROM + LAND_SPAN * ease * 0.34;
+    var spin = 90 + rollP * 900;
+
+    // settle flat against the right edge of the coconut pile.
+    // rotated 90deg, the bottle's visual half-width is half its unrotated HEIGHT.
+    if (land > 0){
+      var bh = roller.offsetHeight;
+      var pileRight = coconuts.offsetLeft + coconuts.offsetWidth * 0.84;
+      var pileMidY  = coconuts.offsetTop  + coconuts.offsetHeight * 0.62;
+      var cx = pileRight + bh/2 - bw/2;
+      var cy = pileMidY - bh/2;
+      x += (cx - x) * ease;
+      y += (cy - y) * ease;
+      var snap = Math.round((spin - 90)/180)*180 + 90;   // nearest horizontal
+      spin += (snap - spin) * ease;
+    }
+
+    roller.style.transform = "translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0) rotate(" + spin.toFixed(1) + "deg)";
+
+    // coconuts appear, then get tapped
+    if (p > 0.66) coconuts.classList.add("show"); else coconuts.classList.remove("show");
+    if (p > 0.875 && !tapped){
+      tapped = true;
+      coconuts.classList.add("tapped");
+    } else if (p < 0.84 && tapped){
+      tapped = false;
+      coconuts.classList.remove("tapped");
+    }
+
+    // panel bands
+    var idx = clamp(Math.floor(p / BAND), 0, panels.length - 1);
+    for (var i=0;i<panels.length;i++){
+      panels[i].classList.toggle("on", i === idx);
+    }
+  }
+
+  function onScroll(){
+    if (!ticking){ ticking = true; window.requestAnimationFrame(frame); }
+  }
+
+  if (!reduce.matches){
+    window.addEventListener("scroll", onScroll, {passive:true});
+    window.addEventListener("resize", onScroll);
+    frame();
+  }
+  reduce.addEventListener && reduce.addEventListener("change", function(){ location.reload(); });
+
+  // front-end only form
+  var form = document.getElementById("notify");
+  var msg = document.getElementById("msg");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var email = document.getElementById("email");
+    var zip = document.getElementById("zip");
+    if (!email.value.trim() || email.value.indexOf("@") < 1){
+      msg.textContent = "Add an email address so we can reach you.";
+      msg.classList.add("on"); email.focus(); return;
+    }
+    if (!zip.value.trim()){
+      msg.textContent = "Add a zip code so we know which shelves to check.";
+      msg.classList.add("on"); zip.focus(); return;
+    }
+    msg.textContent = "You're on the list. This is a demo, so nothing was actually sent — on the live site this would email you when RALLY reaches " + zip.value.trim() + ".";
+    msg.classList.add("on");
+    form.reset();
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Product",
+  "name":"RALLY Organic King Coconut Water",
+  "description":"Single-ingredient king coconut water sourced from Sri Lanka's Coconut Triangle and bottled in glass. No added sugar, no preservatives.",
+  "brand":{"@type":"Brand","name":"RALLY"},
+  "countryOfOrigin":"LK",
+  "material":"Glass",
+  "size":"350 ml"
+}
+</script>
+</body>
+</html>
