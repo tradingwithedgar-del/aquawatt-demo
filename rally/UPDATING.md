@@ -1,26 +1,64 @@
 # RALLY landing page — how to make content updates
 
-The whole page is one file: `index.html`. No build step, no framework, no npm install.
-Open it in any text editor, change the text, save, re-upload. That is the entire workflow.
+Three files, no build step, no framework:
 
-## The three things you will change most
+| File | What it is |
+|---|---|
+| `index.html` | The whole page: markup, styles and behaviour |
+| `anime.umd.min.js` | The animation library (anime.js v4.5.0, MIT licence) |
+| `artifact.html` | A generated copy for hosts that supply their own page wrapper. Do not edit it by hand — it is rebuilt from `index.html` |
 
-### 1. Headline and intro copy
-Search for `<h1>`. The headline and the paragraph under it (`class="lede"`) sit together
-near the top of the file, inside `<section class="hero">`.
+Open `index.html` in any text editor, change the text, save, re-upload.
 
-### 2. The four scroll-story panels
-Search for `<div class="panel"`. There are four, numbered 01 to 04 in the `<span class="num">`
-line. Each one has a heading (`<h2>`) and one or two paragraphs. Edit the words between the tags
-and leave the tags alone.
+## Do this first: bring the photography local
 
-To reorder them, move the whole `<div class="panel">…</div>` block. To add a fifth, copy an
-existing block, paste it after the last one, and change `0.235` to `0.19` in the script near the
-bottom (search for `var BAND`) so the scroll splits five ways instead of four.
+The images are currently loaded from a temporary CDN. That is fine for review and
+will break eventually. Download the five files, put them in `rally/img/`, and change
+one line near the bottom of `index.html`:
 
-### 3. Stockists
-Search for `<h3>Stockists</h3>`. Right now it says retail partners are being confirmed. When you
-have your first stores, replace that paragraph with a list:
+```js
+var BASE = "img/";
+```
+
+Then rename the downloads to match the names in `SHOTS` on the lines below it, or
+change those names to whatever you saved them as. Nothing else has to change.
+
+**These are generated stand-ins, not real product photography.** They approximate the
+bottle but the label will not match yours exactly. Replace them with your own shots
+before launch — the layout is built to take them at the same crops:
+
+| Slot | Crop | What it shows |
+|---|---|---|
+| `hero` | 3:2 landscape | The bottle on a plain studio backdrop. Fills the right half of the hero |
+| `bottle` | 4:5 portrait | The bottle straight on. Travels down the page inside a framed panel |
+| `coconuts` | 4:3 landscape | King coconuts, one cut open |
+| `plantation` | 16:9 landscape | The growing region |
+| `pour` | 4:5 portrait | Coconut water poured into a glass |
+
+If a photo fails to load the page shows a labelled panel in its place rather than a
+broken image, so a missing file is obvious instead of ugly.
+
+## The four story panels
+
+Search for `<div class="beat"`. Each has an eyebrow, a heading and one or two
+paragraphs. Edit the words between the tags and leave the tags alone.
+
+The scroll choreography is built from the number of panels, so if you add or remove
+one, the timeline adjusts on its own — but also add or remove a `<span></span>` in
+`<div class="dots">` so the progress dots still match.
+
+Which photo sits behind which panel is set by one line:
+
+```js
+var plateShots = ["coconuts","pour","hero","plantation"];
+```
+
+Reorder that array to reorder the backdrops.
+
+## Stockists
+
+Search for `<h3>Stockists</h3>`. It currently says partners are being confirmed. When
+you have your first stores, replace that paragraph with a list:
 
 ```html
 <ul>
@@ -29,44 +67,49 @@ have your first stores, replace that paragraph with a list:
 </ul>
 ```
 
-## Colors
-All brand colors are defined once, at the very top of the `<style>` block, under `:root`.
-Change a hex there and it updates everywhere on the page.
+## Colours
+
+Every colour is defined once, at the top of the `<style>` block under `:root`.
 
 | Variable | Used for |
 |---|---|
-| `--cobalt` | Brand blue: headings, buttons, the sky |
-| `--cream` | Page background and card backgrounds |
-| `--yellow` | Accent: the eyebrow line, tags, highlighted words |
-| `--coral` | Decorative coral (progress bar, bottle label) |
-| `--coral-ink` | The darker coral used for any coral *text* or button — it is darker on purpose so the text stays readable. Do not swap it for the bright coral. |
-| `--sea` / `--sand` | The illustrated beach |
+| `--cobalt` | Brand blue: the hero, buttons, headings |
+| `--paper` / `--paper-warm` | The two light grounds |
+| `--ink` | Near-black navy: body text and the dark sections |
+| `--gold` | Warm accent |
+| `--gold-on-cobalt` | A lighter gold used **only** for gold text on blue or dark grounds. It is lighter on purpose so the text stays readable — do not replace it with `--gold` |
+| `--mist` | The muted neutral for secondary text |
+| `--rust` | Coral, used sparingly |
 
 ## The signup form
-The form is currently front-end only — it validates and shows a confirmation, but nothing is sent
-anywhere. Before this goes live it needs to be connected to whatever list you use.
 
-- **Klaviyo / Mailchimp**: paste their embed code in place of the `<form id="notify">` block.
-- **Keep this design, just make it send**: add `action="https://…"` and `method="POST"` to the
-  `<form>` tag using a form service (Formspree, Basin, Netlify Forms), then delete the
-  `e.preventDefault();` line in the script at the bottom.
+Front-end only right now: it validates and confirms, but sends nothing anywhere.
+Before launch, connect it:
 
-Until that is done the page carries a `noindex` tag so it cannot be found in search. **Remove the
-`<meta name="robots" content="noindex, nofollow">` line only after the form actually works** —
-otherwise a real customer can sign up and you will never see it.
+- **Klaviyo / Mailchimp**: replace the `<form id="notify">` block with their embed code.
+- **Keep this design**: add `action="https://…"` and `method="POST"` to the `<form>` tag
+  using a form service (Formspree, Basin, Netlify Forms), then delete the
+  `e.preventDefault();` line in the small script below it.
+
+The page carries `<meta name="robots" content="noindex, nofollow">` so it cannot be
+found in search. **Remove that line only after the form actually sends** — otherwise a
+real customer signs up and you never see it.
 
 ## Before launch, also
-- Delete the grey demo notice at the top of the page: the `<p class="demo-bar">…</p>` line.
-- Swap the illustrated bottle for your product photography if you prefer — the bottle is inline
-  SVG inside `<div class="roller">`. Replace it with `<img src="bottle.png" alt="RALLY king
-  coconut water">` and the rolling animation will still work on the image.
-- Fill in a real contact email in the footer.
-- Add your Instagram handle if it changes (search for `instagram.com`).
+
+- Delete the notice bar at the top: the `<p class="demo">…</p>` line.
+- Add a real contact email in the footer.
+- Bring the photography local (see above) so the page does not depend on a CDN.
 
 ## Things worth not breaking
-- The scroll animation reads the height of `.story-track` (`460vh` in the CSS). Making it shorter
-  speeds the roll up; longer slows it down. Do not set it below about `300vh` or the panels flick.
-- Anyone with "reduce motion" turned on in their OS gets a static stacked version automatically.
-  That is handled by the `@media (prefers-reduced-motion: reduce)` block. Leave it in.
-- Every image and icon on the page is inline SVG or CSS, which is why it loads instantly. Adding
-  large photos is fine, but add `loading="lazy"` and set `width`/`height` on them.
+
+- The scroll story is driven by the height of `.track` (`520vh`). Shorter speeds the
+  sequence up, longer slows it down. Below roughly `320vh` the panels start to flick.
+- Anyone with "reduce motion" enabled in their OS gets a static, stacked version of the
+  whole story automatically. That lives in the `@media (prefers-reduced-motion: reduce)`
+  block. Leave it in — it is also what makes the page readable if the animation ever
+  fails to start.
+- `anime.umd.min.js` must sit next to `index.html`. If you move it, update the
+  `<script src="…">` line.
+- Images carry `width` and `height` attributes so the page does not jump while they
+  load. If you swap a photo for one with a different shape, update those two numbers.
