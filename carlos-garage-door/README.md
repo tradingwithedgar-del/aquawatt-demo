@@ -2,6 +2,10 @@
 
 Unapproved demo built by Grand Nash Studio. Single self-contained `index.html`, no build step.
 
+Direction: galvanized steel ground, hazard-tag yellow accent, job-ticket two-column layout.
+The phone number is the hero and the primary button. Carlos's red is confined to the logo
+glyph and one hover state, so the page reads as his without red running the design.
+
 Deploy: drag this folder into Netlify.
 
 Before this becomes a real, paid, approved site:
