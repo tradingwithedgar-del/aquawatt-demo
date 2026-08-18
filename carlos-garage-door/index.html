@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Carlos Garage Door Services — Garage door repair in Houston</title>
+<meta name="description" content="Garage door repair and installation across Houston and surrounding areas. Springs, openers, cables, new doors. Residential and commercial. Se habla espanol. Call or text Carlos at 832-845-4632.">
+<meta property="og:title" content="Carlos Garage Door Services — Houston garage door repair">
+<meta property="og:description" content="Springs, openers, cables and new doors across Houston and surrounding areas. Residential and commercial. Se habla espanol.">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --concrete:#E9E5DE;
+  --steel:#D6D0C6;
+  --steel-dk:#BDB6AA;
+  --ink:#14120F;
+  --ink-2:#57514A;
+  --red:#A81F16;
+  --red-dk:#7A1610;
+  --line:#14120F;
+  --rail:52px;
+  --display:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--concrete);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding-left:0;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+
+/* ---------- sectional-door language: hard edges, panel seams, no shadows ---------- */
+.seam{height:0;border-top:2px solid var(--line);border-bottom:1px solid var(--steel-dk)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.sec{padding:64px 0;border-bottom:2px solid var(--line)}
+.eyebrow{
+  font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-2);margin-bottom:14px;
+}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1.02;text-transform:uppercase}
+h2{font-size:clamp(30px,5vw,46px);margin-bottom:8px}
+h3{font-size:20px;letter-spacing:-.01em}
+.lede{font-size:clamp(17px,2vw,19px);color:var(--ink-2);max-width:60ch;margin-top:10px}
+
+/* ---------- demo marker ---------- */
+.demo-bar{
+  background:var(--ink);color:#F3F0EA;font-family:var(--mono);
+  font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  padding:9px 20px;text-align:center;
+}
+.demo-bar b{color:#F0B429;font-weight:700}
+@media(max-width:620px){.demo-bar{font-size:10px;letter-spacing:.04em;padding:8px 14px}}
+
+/* ---------- roller track rail (desktop) ---------- */
+.rail{display:none}
+@media(min-width:1040px){
+  body{padding-left:var(--rail)}
+  .rail{
+    display:block;position:fixed;left:0;top:0;bottom:0;width:var(--rail);
+    background:var(--steel);border-right:2px solid var(--line);z-index:40;
+  }
+  .rail::before{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;
+    background:var(--line);transform:translateX(-1px);
+  }
+  .rail::after{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:12px;
+    transform:translateX(-6px);
+    background:repeating-linear-gradient(var(--concrete) 0 8px, transparent 8px 34px);
+  }
+  .roller{
+    position:fixed;left:calc(var(--rail)/2);top:0;width:22px;height:22px;
+    margin-left:-11px;border-radius:50%;background:var(--red);
+    border:2px solid var(--line);z-index:41;
+  }
+}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:30;background:var(--concrete);
+  border-bottom:2px solid var(--line);
+}
+.hdr{display:flex;align-items:center;gap:16px;padding:12px 20px;max-width:1120px;margin:0 auto}
+.mark{width:38px;height:38px;flex:none;border:2px solid var(--line);background:var(--red);
+  display:grid;grid-template-rows:repeat(4,1fr);gap:2px;padding:4px}
+.mark i{display:block;background:var(--concrete)}
+.brand{font-family:var(--display);font-weight:800;font-size:16px;line-height:1.1;text-transform:uppercase;letter-spacing:-.01em}
+.brand small{display:block;font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.12em;color:var(--ink-2);text-transform:uppercase}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.lang{
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  background:transparent;border:2px solid var(--line);color:var(--ink);
+  padding:8px 10px;cursor:pointer;min-height:44px;
+}
+.lang:hover{background:var(--steel)}
+.call{
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;background:var(--red);color:#fff;
+  border:2px solid var(--line);padding:10px 16px;text-decoration:none;min-height:44px;
+  font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:15px;
+}
+.call:hover{background:var(--red-dk)}
+.hdr .call{display:none}
+@media(min-width:620px){.hdr .call{display:inline-flex}}
+@media(max-width:820px){.hdr .call{font-size:14px;padding:10px 12px}}
+
+/* ---------- hero: the door lifts ---------- */
+.hero{position:relative;border-bottom:2px solid var(--line);overflow:hidden;background:var(--concrete)}
+.hero-in{max-width:1120px;margin:0 auto;padding:70px 20px 56px}
+.hero h1{font-size:clamp(38px,7.4vw,80px);max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lede{margin-top:18px;font-size:clamp(17px,2.1vw,21px);color:var(--ink-2)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;align-items:center}
+.btn-ghost{
+  display:inline-flex;align-items:center;min-height:48px;padding:10px 18px;
+  border:2px solid var(--line);background:transparent;text-decoration:none;cursor:pointer;
+  font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:15px;color:var(--ink);
+}
+.btn-ghost:hover{background:var(--steel)}
+.hero-note{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-2);text-transform:uppercase;margin-top:18px}
+
+.door{position:absolute;inset:0;z-index:5;display:grid;grid-template-rows:repeat(4,1fr);pointer-events:none}
+.door span{
+  background:var(--steel);border-bottom:2px solid var(--line);
+  transform:translateY(0);
+}
+.js .door span{animation:lift 900ms cubic-bezier(.4,0,.2,1) forwards}
+.js .door span:nth-child(1){animation-delay:120ms}
+.js .door span:nth-child(2){animation-delay:200ms}
+.js .door span:nth-child(3){animation-delay:280ms}
+.js .door span:nth-child(4){animation-delay:360ms}
+@keyframes lift{to{transform:translateY(-420%)}}
+@media(prefers-reduced-motion:reduce){
+  .js .door span{animation:none;display:none}
+}
+.no-js-hide{display:none}
+
+/* ---------- triage picker ---------- */
+.triage{background:var(--steel);border-bottom:2px solid var(--line)}
+.triage .wrap{padding-top:44px;padding-bottom:44px}
+.tiles{display:grid;gap:0;grid-template-columns:1fr;border:2px solid var(--line);margin-top:20px;background:var(--line)}
+@media(min-width:620px){.tiles{grid-template-columns:1fr 1fr}}
+@media(min-width:940px){.tiles{grid-template-columns:repeat(4,1fr)}}
+.tile{
+  background:var(--concrete);border:0;text-align:left;cursor:pointer;padding:20px 18px 22px;
+  font-family:var(--body);color:var(--ink);min-height:44px;
+  border-bottom:2px solid var(--line);
+}
+@media(min-width:940px){.tile{border-bottom:0;border-right:2px solid var(--line)}.tile:last-child{border-right:0}}
+.tile:hover,.tile:focus-visible{background:#fff}
+.tile b{display:block;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:17px;margin-bottom:6px}
+.tile span{display:block;font-size:14px;color:var(--ink-2);line-height:1.45}
+.tile .likely{
+  display:block;margin-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--red);
+}
+
+/* ---------- services ---------- */
+.svc{display:grid;gap:0;grid-template-columns:1fr;border:2px solid var(--line);margin-top:26px}
+@media(min-width:700px){.svc{grid-template-columns:1fr 1fr}}
+.svc>div{padding:22px 20px;border-bottom:2px solid var(--line);background:var(--concrete)}
+@media(min-width:700px){
+  .svc>div:nth-child(odd){border-right:2px solid var(--line)}
+  .svc>div:nth-last-child(-n+2){border-bottom:0}
+}
+@media(max-width:699px){.svc>div:last-child{border-bottom:0}}
+.svc p{font-size:15px;color:var(--ink-2);margin-top:6px}
+
+/* ---------- pricing ---------- */
+.pricing{background:var(--ink);color:#F3F0EA;border-bottom:2px solid var(--line)}
+.pricing h2{color:#fff}
+.pricing .eyebrow{color:#B7AFA3}
+.pricing .lede{color:#C9C2B7}
+.ptable{width:100%;border-collapse:collapse;margin-top:26px;font-size:16px}
+.ptable caption{text-align:left;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;color:#F0B429;padding-bottom:12px}
+.ptable th,.ptable td{border:2px solid #3D3831;padding:14px 14px;text-align:left;vertical-align:top}
+.ptable th{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#B7AFA3;font-weight:400}
+.ptable td:first-child{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:16px}
+.ptable td.num{font-family:var(--mono);white-space:nowrap;color:#fff}
+.ptable td small{display:block;font-family:var(--body);font-weight:400;text-transform:none;
+  font-size:14px;color:#C9C2B7;margin-top:4px;letter-spacing:0}
+.pnote{margin-top:18px;font-size:15px;color:#C9C2B7;max-width:62ch}
+
+/* ---------- photos ---------- */
+.shots{display:grid;gap:14px;grid-template-columns:1fr;margin-top:26px}
+@media(min-width:620px){.shots{grid-template-columns:1fr 1fr}}
+@media(min-width:940px){.shots{grid-template-columns:repeat(3,1fr)}}
+.shot{
+  border:2px dashed var(--ink-2);background:var(--steel);aspect-ratio:4/3;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);
+  text-align:center;padding:16px;
+}
+.shot b{font-family:var(--display);font-size:14px;letter-spacing:.06em;color:var(--ink)}
+
+/* ---------- reviews ---------- */
+.revs{display:grid;gap:0;grid-template-columns:1fr;border:2px solid var(--line);margin-top:26px}
+@media(min-width:700px){.revs{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.revs{grid-template-columns:repeat(3,1fr)}}
+.rev{padding:22px 20px;border-bottom:2px solid var(--line);background:var(--concrete)}
+.rev:last-child{border-bottom:0}
+@media(min-width:700px){
+  .rev{border-right:2px solid var(--line)}
+  .rev:nth-child(2n){border-right:0}
+}
+@media(min-width:1000px){
+  .rev{border-right:2px solid var(--line)}
+  .rev:nth-child(2n){border-right:2px solid var(--line)}
+  .rev:nth-child(3n){border-right:0}
+  .rev:nth-last-child(-n+3){border-bottom:0}
+}
+.rev-hd{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.rev-hd b{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:15px}
+.rev-hd time{font-family:var(--mono);font-size:11px;color:var(--ink-2);letter-spacing:.06em}
+.stars{color:var(--red);letter-spacing:.12em;font-size:13px}
+.rev p{font-size:15px;color:var(--ink-2)}
+.tags{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--steel-dk);padding:4px 7px;color:var(--ink-2)}
+
+/* ---------- form ---------- */
+.form-grid{display:grid;gap:16px;grid-template-columns:1fr;margin-top:24px;max-width:640px}
+@media(min-width:620px){.form-grid .half{grid-column:span 1}.form-grid{grid-template-columns:1fr 1fr}
+  .form-grid .full{grid-column:1/-1}}
+label{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+input,select,textarea{
+  width:100%;font-family:var(--body);font-size:16px;color:var(--ink);
+  background:#fff;border:2px solid var(--line);padding:12px 12px;min-height:48px;border-radius:0;
+}
+textarea{min-height:110px;resize:vertical}
+.submit{
+  background:var(--red);color:#fff;border:2px solid var(--line);cursor:pointer;
+  font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:17px;
+  padding:14px 24px;min-height:52px;
+}
+.submit:hover{background:var(--red-dk)}
+.privacy{font-size:14px;color:var(--ink-2);margin-top:10px;max-width:52ch}
+.chip{
+  display:none;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  border:2px solid var(--red);color:var(--red);padding:8px 12px;margin-bottom:18px;
+}
+.chip.on{display:inline-block}
+.ok{
+  display:none;border:2px solid var(--line);background:var(--steel);padding:22px 20px;margin-top:24px;max-width:640px;
+}
+.ok.on{display:block}
+.ok b{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:19px;display:block;margin-bottom:6px}
+
+/* ---------- area + footer ---------- */
+.area-note{border:2px solid var(--line);background:var(--steel);padding:20px;margin-top:24px;max-width:64ch}
+.area-note p{font-size:15px;color:var(--ink-2);margin-top:6px}
+footer{background:var(--ink);color:#C9C2B7;padding:44px 0 100px;font-size:15px}
+footer .wrap{display:grid;gap:22px}
+@media(min-width:760px){footer .wrap{grid-template-columns:1fr 1fr}}
+footer b{color:#fff;font-family:var(--display);text-transform:uppercase;letter-spacing:.02em;display:block;margin-bottom:8px}
+footer a{color:#fff}
+.fine{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#8B837A;text-transform:uppercase;grid-column:1/-1;
+  border-top:2px solid #3D3831;padding-top:18px}
+
+/* ---------- sticky mobile call bar ---------- */
+.bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;
+  border-top:2px solid var(--line);
+}
+.bar a{
+  flex:1;text-align:center;padding:16px 8px;text-decoration:none;min-height:56px;
+  font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:16px;
+}
+.bar .b1{background:var(--red);color:#fff}
+.bar .b2{background:var(--concrete);color:var(--ink);border-left:2px solid var(--line)}
+body{padding-bottom:60px}
+@media(min-width:1040px){.bar{display:none}body{padding-bottom:0;padding-left:var(--rail)}}
+</style>
+</head>
+<body>
+<div class="rail" aria-hidden="true"></div>
+<div class="roller" aria-hidden="true" id="roller"></div>
+
+<div class="demo-bar" role="note">
+  <b>Demo preview</b> &nbsp;·&nbsp; Grand Nash Studio for Carlos Garage Door Services &nbsp;·&nbsp; Sample pricing
+</div>
+
+<header>
+  <div class="hdr">
+    <div class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="brand">Carlos Garage Door<small data-en="Houston, TX · Se habla espanol" data-es="Houston, TX · Se habla espanol">Houston, TX · Se habla espanol</small></div>
+    <div class="hdr-right">
+      <button class="lang" id="lang" type="button" aria-label="Ver en espanol">ES</button>
+      <a class="call" href="tel:+18328454632"><span class="lbl" data-en="Call" data-es="Llamar">Call</span> 832-845-4632</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="door" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="hero-in">
+    <p class="eyebrow" data-en="Residential &amp; commercial · Houston and surrounding areas" data-es="Residencial y comercial · Houston y areas cercanas">Residential &amp; commercial · Houston and surrounding areas</p>
+    <h1 data-en="Door stuck? &lt;em&gt;Carlos picks up.&lt;/em&gt;" data-es="&#191;Puerta atascada? &lt;em&gt;Carlos contesta.&lt;/em&gt;">Door stuck? <em>Carlos picks up.</em></h1>
+    <p class="lede" data-en="Springs, openers, cables and new doors, anywhere in Houston. You get Carlos on the phone, not a call center, and you hear the price before anyone touches the door." data-es="Resortes, motores, cables y puertas nuevas en todo Houston. Hablas directamente con Carlos, no con un centro de llamadas, y sabes el precio antes de que alguien toque la puerta.">Springs, openers, cables and new doors, anywhere in Houston. You get Carlos on the phone, not a call center, and you hear the price before anyone touches the door.</p>
+    <div class="hero-cta">
+      <a class="call" href="tel:+18328454632" data-en="Call 832-845-4632" data-es="Llama al 832-845-4632">Call 832-845-4632</a>
+      <a class="btn-ghost" href="#request" data-en="Send the details instead" data-es="Enviar los detalles">Send the details instead</a>
+    </div>
+    <p class="hero-note" data-en="Same phone, same guy, every job" data-es="El mismo numero, la misma persona, en cada trabajo">Same phone, same guy, every job</p>
+  </div>
+</section>
+
+<section class="triage" id="triage">
+  <div class="wrap">
+    <p class="eyebrow" data-en="Start here" data-es="Empieza aqui">Start here</p>
+    <h2 data-en="What is the door doing?" data-es="&#191;Que esta haciendo la puerta?">What is the door doing?</h2>
+    <p class="lede" data-en="Pick the closest one. It fills in your request so Carlos already knows what he is walking into, and can tell you what it usually costs before he drives out." data-es="Elige la opcion mas parecida. Se agrega a tu solicitud para que Carlos ya sepa a que va, y pueda decirte cuanto suele costar antes de salir.">Pick the closest one. It fills in your request so Carlos already knows what he is walking into, and can tell you what it usually costs before he drives out.</p>
+    <div class="tiles">
+      <button class="tile" type="button" data-issue="Loud bang, now it will not lift">
+        <b data-en="Loud bang, will not lift" data-es="Sono fuerte y no sube">Loud bang, will not lift</b>
+        <span data-en="A bang from the garage, and now the door feels far too heavy or only moves a few inches." data-es="Un golpe fuerte en el garaje, y ahora la puerta pesa mucho o solo sube unas pulgadas.">A bang from the garage, and now the door feels far too heavy or only moves a few inches.</span>
+        <span class="likely" data-en="Usually a broken spring" data-es="Normalmente un resorte roto">Usually a broken spring</span>
+      </button>
+      <button class="tile" type="button" data-issue="Opener runs but the door does not move">
+        <b data-en="Opener runs, door stays put" data-es="El motor suena, la puerta no se mueve">Opener runs, door stays put</b>
+        <span data-en="Motor hums or the light blinks, but the door does not follow, or it reverses on its own." data-es="El motor suena o la luz parpadea, pero la puerta no responde, o se regresa sola.">Motor hums or the light blinks, but the door does not follow, or it reverses on its own.</span>
+        <span class="likely" data-en="Usually the opener or the sensors" data-es="Normalmente el motor o los sensores">Usually the opener or the sensors</span>
+      </button>
+      <button class="tile" type="button" data-issue="Door is crooked, off track, or grinding">
+        <b data-en="Crooked, off track, grinding" data-es="Chueca, fuera del riel, rechina">Crooked, off track, grinding</b>
+        <span data-en="One side sits higher, the cable looks loose or frayed, or it screeches on the way up." data-es="Un lado queda mas alto, el cable se ve suelto o desgastado, o rechina al subir.">One side sits higher, the cable looks loose or frayed, or it screeches on the way up.</span>
+        <span class="likely" data-en="Usually cables, rollers or track" data-es="Normalmente cables, rodillos o riel">Usually cables, rollers or track</span>
+      </button>
+      <button class="tile" type="button" data-issue="Want a new door or a quote on a replacement">
+        <b data-en="Want a new door" data-es="Quiero una puerta nueva">Want a new door</b>
+        <span data-en="Dented, rotting, or you are ready to replace it. Residential or commercial." data-es="Abollada, danada, o ya quieres cambiarla. Residencial o comercial.">Dented, rotting, or you are ready to replace it. Residential or commercial.</span>
+        <span class="likely" data-en="Quote on new install" data-es="Cotizacion de instalacion">Quote on new install</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="wrap">
+    <p class="eyebrow" data-en="What Carlos handles" data-es="Lo que hace Carlos">What Carlos handles</p>
+    <h2 data-en="Repairs, openers, new doors" data-es="Reparacion, motores, puertas nuevas">Repairs, openers, new doors</h2>
+    <p class="lede" data-en="Residential and commercial work across Houston and the surrounding areas." data-es="Trabajo residencial y comercial en Houston y las areas cercanas.">Residential and commercial work across Houston and the surrounding areas.</p>
+    <div class="svc">
+      <div>
+        <h3 data-en="Spring replacement" data-es="Cambio de resortes">Spring replacement</h3>
+        <p data-en="Torsion and extension springs. This is the one nobody should try at home, the tension is enough to break a wrist." data-es="Resortes de torsion y extension. Este es el trabajo que nadie debe intentar en casa, la tension puede romper una muneca.">Torsion and extension springs. This is the one nobody should try at home, the tension is enough to break a wrist.</p>
+      </div>
+      <div>
+        <h3 data-en="Opener repair &amp; install" data-es="Reparacion e instalacion de motor">Opener repair &amp; install</h3>
+        <p data-en="Chain, belt and screw drive units. Sensor alignment, remotes, keypads, and full replacements." data-es="Motores de cadena, banda y tornillo. Alineacion de sensores, controles, teclados y reemplazo completo.">Chain, belt and screw drive units. Sensor alignment, remotes, keypads, and full replacements.</p>
+      </div>
+      <div>
+        <h3 data-en="Cables, rollers, track" data-es="Cables, rodillos, riel">Cables, rollers, track</h3>
+        <p data-en="Snapped or frayed cables, worn rollers, bent track, doors that have come off track." data-es="Cables rotos o desgastados, rodillos gastados, riel doblado, puertas fuera del riel.">Snapped or frayed cables, worn rollers, bent track, doors that have come off track.</p>
+      </div>
+      <div>
+        <h3 data-en="New door installation" data-es="Instalacion de puerta nueva">New door installation</h3>
+        <p data-en="Full replacement, residential and commercial, including hauling the old door away." data-es="Reemplazo completo, residencial y comercial, incluyendo retirar la puerta vieja.">Full replacement, residential and commercial, including hauling the old door away.</p>
+      </div>
+      <div>
+        <h3 data-en="Tune-up &amp; maintenance" data-es="Ajuste y mantenimiento">Tune-up &amp; maintenance</h3>
+        <p data-en="Balance, lubrication, hardware tightening, safety reverse check. Cheaper than the spring it prevents." data-es="Balanceo, lubricacion, ajuste de herrajes, prueba de reversa de seguridad. Sale mas barato que el resorte que evita.">Balance, lubrication, hardware tightening, safety reverse check. Cheaper than the spring it prevents.</p>
+      </div>
+      <div>
+        <h3 data-en="Commercial doors" data-es="Puertas comerciales">Commercial doors</h3>
+        <p data-en="Shops, warehouses and rental properties. Doors that have to open first thing Monday." data-es="Talleres, bodegas y propiedades de renta. Puertas que tienen que abrir el lunes temprano.">Shops, warehouses and rental properties. Doors that have to open first thing Monday.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing sec" id="pricing">
+  <div class="wrap">
+    <p class="eyebrow" data-en="Straight pricing" data-es="Precios claros">Straight pricing</p>
+    <h2 data-en="The number you hear is the number you pay" data-es="El precio que te digo es el precio que pagas">The number you hear is the number you pay</h2>
+    <p class="lede" data-en="No nineteen dollar service call that turns into four hundred at the door. Here is roughly what the common jobs run. Carlos confirms the exact price with you before any work starts." data-es="Nada de una visita de diecinueve dolares que se convierte en cuatrocientos en la puerta. Esto es mas o menos lo que cuestan los trabajos comunes. Carlos confirma el precio exacto contigo antes de empezar.">No nineteen dollar service call that turns into four hundred at the door. Here is roughly what the common jobs run. Carlos confirms the exact price with you before any work starts.</p>
+    <table class="ptable">
+      <caption data-en="Sample figures for this demo. Carlos&#39;s real numbers go here." data-es="Cifras de ejemplo para esta demostracion. Aqui van los precios reales de Carlos.">Sample figures for this demo. Carlos's real numbers go here.</caption>
+      <thead>
+        <tr>
+          <th scope="col" data-en="Job" data-es="Trabajo">Job</th>
+          <th scope="col" data-en="Typical range" data-es="Rango tipico">Typical range</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span data-en="Service call" data-es="Visita de diagnostico">Service call</span><small data-en="Waived if you go ahead with the repair" data-es="Se descuenta si haces la reparacion">Waived if you go ahead with the repair</small></td><td class="num">$49 – $79</td></tr>
+        <tr><td><span data-en="Spring replacement" data-es="Cambio de resortes">Spring replacement</span><small data-en="Single or pair, parts and labor" data-es="Uno o par, partes y mano de obra">Single or pair, parts and labor</small></td><td class="num">$185 – $375</td></tr>
+        <tr><td><span data-en="Opener repair" data-es="Reparacion de motor">Opener repair</span><small data-en="Sensors, gears, remotes" data-es="Sensores, engranes, controles">Sensors, gears, remotes</small></td><td class="num">$125 – $250</td></tr>
+        <tr><td><span data-en="New opener installed" data-es="Motor nuevo instalado">New opener installed</span><small data-en="Unit and install" data-es="Equipo e instalacion">Unit and install</small></td><td class="num">$375 – $650</td></tr>
+        <tr><td><span data-en="Cables or rollers" data-es="Cables o rodillos">Cables or rollers</span><small data-en="Per door" data-es="Por puerta">Per door</small></td><td class="num">$150 – $275</td></tr>
+        <tr><td><span data-en="New door installed" data-es="Puerta nueva instalada">New door installed</span><small data-en="Depends on size and material, quoted on site" data-es="Depende del tamano y material, cotizado en sitio">Depends on size and material, quoted on site</small></td><td class="num" data-en="Quoted on site" data-es="Cotizado en sitio">Quoted on site</td></tr>
+      </tbody>
+    </table>
+    <p class="pnote" data-en="Ranges cover most jobs. A door that is bent up or a commercial unit can land outside them, and Carlos will say so on the phone rather than at your house." data-es="Los rangos cubren la mayoria de los trabajos. Una puerta muy danada o una unidad comercial puede salirse del rango, y Carlos te lo dice por telefono, no ya estando en tu casa.">Ranges cover most jobs. A door that is bent up or a commercial unit can land outside them, and Carlos will say so on the phone rather than at your house.</p>
+  </div>
+</section>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <p class="eyebrow" data-en="Recent work" data-es="Trabajos recientes">Recent work</p>
+    <h2 data-en="Doors he has already fixed" data-es="Puertas que ya reparo">Doors he has already fixed</h2>
+    <p class="lede" data-en="Real jobs around Houston, not stock photos of somebody else&#39;s garage." data-es="Trabajos reales en Houston, no fotos de archivo del garaje de alguien mas.">Real jobs around Houston, not stock photos of somebody else's garage.</p>
+    <div class="shots">
+      <div class="shot"><b>Pictures go here</b><span>Spring / hardware close-up</span></div>
+      <div class="shot"><b>Pictures go here</b><span>Before and after on a door</span></div>
+      <div class="shot"><b>Pictures go here</b><span>Truck on site</span></div>
+      <div class="shot"><b>Pictures go here</b><span>New door installed</span></div>
+      <div class="shot"><b>Pictures go here</b><span>Opener install</span></div>
+      <div class="shot"><b>Pictures go here</b><span>Commercial job</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <p class="eyebrow" data-en="What customers say" data-es="Lo que dicen los clientes">What customers say</p>
+    <h2 data-en="Same three words keep coming up" data-es="Se repiten las mismas tres palabras">Same three words keep coming up</h2>
+    <p class="lede" data-en="Pricing, communication, punctuality. Those are the tags customers keep choosing on their own." data-es="Precio, comunicacion, puntualidad. Son las etiquetas que los clientes eligen una y otra vez.">Pricing, communication, punctuality. Those are the tags customers keep choosing on their own.</p>
+    <div class="revs">
+      <div class="rev">
+        <div class="rev-hd"><b>Detrick</b><time datetime="2024-11-15">Nov 2024</time></div>
+        <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <p>"I highly recommend Carlos. Communication was awesome as well as the service. He came within a few hours of me contacting him and he did an amazing job."</p>
+        <div class="tags"><span>Punctuality</span><span>Communication</span><span>Pricing</span></div>
+      </div>
+      <div class="rev">
+        <div class="rev-hd"><b>Sandy</b><time datetime="2024-08-12">Aug 2024</time></div>
+        <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <p>"Excellent communicator. Quickly diagnosed my issue, explained the problem clearly, went to purchase the products, came back and fixed the issue."</p>
+        <div class="tags"><span>Communication</span><span>Pricing</span></div>
+      </div>
+      <div class="rev">
+        <div class="rev-hd"><b>Anna</b><time datetime="2025-03-04">Mar 2025</time></div>
+        <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <p>"Quick service. Reasonably priced. 100 percent recommend."</p>
+        <div class="tags"><span>Punctuality</span><span>Pricing</span></div>
+      </div>
+      <div class="rev">
+        <div class="rev-hd"><b>Randy</b><time datetime="2024-07-28">Jul 2024</time></div>
+        <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <p>"Carlos is very professional and quick to respond. In my experience he does very good work and is reasonable in his pricing. I will use him again."</p>
+        <div class="tags"><span>Communication</span><span>Pricing</span></div>
+      </div>
+      <div class="rev">
+        <div class="rev-hd"><b>Sergio</b><time datetime="2025-01-30">Jan 2025</time></div>
+        <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <p>"Best decision I have made. Everything was on point and Carlos made sure all equipment was top notch. I will highly recommend to friends and family."</p>
+        <div class="tags"><span>Communication</span><span>Pricing</span></div>
+      </div>
+      <div class="rev">
+        <div class="rev-hd"><b>Roy</b><time datetime="2025-05-08">May 2025</time></div>
+        <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <p>"Responsive, reliable and friendly. He quickly replaced my garage door springs and got me back in working order."</p>
+        <div class="tags"><span>Punctuality</span><span>Communication</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="request">
+  <div class="wrap">
+    <p class="eyebrow" data-en="Send it over" data-es="Mandanos los datos">Send it over</p>
+    <h2 data-en="Tell Carlos what is going on" data-es="Cuentale a Carlos que pasa">Tell Carlos what is going on</h2>
+    <p class="lede" data-en="If you would rather not call, put it here. If it is urgent, the phone is faster." data-es="Si prefieres no llamar, escribelo aqui. Si es urgente, el telefono es mas rapido.">If you would rather not call, put it here. If it is urgent, the phone is faster.</p>
+
+    <div class="area-note">
+      <b data-en="Service area" data-es="Area de servicio" style="font-family:var(--display);text-transform:uppercase;font-weight:800">Service area</b>
+      <p data-en="All of Houston and the surrounding areas. Residential and commercial. Se habla espanol." data-es="Todo Houston y las areas cercanas. Residencial y comercial. Se habla espanol.">All of Houston and the surrounding areas. Residential and commercial. Se habla espanol.</p>
+    </div>
+
+    <p class="chip" id="chip"></p>
+
+    <form class="form-grid" id="req" novalidate>
+      <div class="half">
+        <label for="name" data-en="Your name" data-es="Tu nombre">Your name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="half">
+        <label for="phone" data-en="Phone number" data-es="Telefono">Phone number</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+      </div>
+      <div class="full">
+        <label for="issue" data-en="What is happening" data-es="Que esta pasando">What is happening</label>
+        <select id="issue" name="issue">
+          <option value="" data-en="Choose one" data-es="Elige una">Choose one</option>
+          <option data-en="Loud bang, now it will not lift" data-es="Sono fuerte y ahora no sube">Loud bang, now it will not lift</option>
+          <option data-en="Opener runs but the door does not move" data-es="El motor suena pero la puerta no se mueve">Opener runs but the door does not move</option>
+          <option data-en="Door is crooked, off track, or grinding" data-es="La puerta esta chueca, fuera del riel o rechina">Door is crooked, off track, or grinding</option>
+          <option data-en="Want a new door or a quote on a replacement" data-es="Quiero una puerta nueva o una cotizacion">Want a new door or a quote on a replacement</option>
+          <option data-en="Something else" data-es="Otra cosa">Something else</option>
+        </select>
+      </div>
+      <div class="full">
+        <label for="area" data-en="Part of town" data-es="Zona de la ciudad">Part of town</label>
+        <input id="area" name="area" type="text" autocomplete="address-level2">
+      </div>
+      <div class="full">
+        <label for="notes" data-en="Anything else worth knowing" data-es="Algo mas que debamos saber">Anything else worth knowing</label>
+        <textarea id="notes" name="notes"></textarea>
+      </div>
+      <div class="full">
+        <button class="submit" type="submit" data-en="Send the request" data-es="Enviar la solicitud">Send the request</button>
+        <p class="privacy" data-en="Your name and number are used to call you back about this door. Nothing else, and nobody else gets them." data-es="Tu nombre y telefono se usan solo para llamarte sobre esta puerta. Nada mas, y no se comparten con nadie.">Your name and number are used to call you back about this door. Nothing else, and nobody else gets them.</p>
+      </div>
+    </form>
+
+    <div class="ok" id="ok" role="status">
+      <b data-en="Got it" data-es="Recibido">Got it</b>
+      <p data-en="Carlos will call you back at the number you left. If the door is blocking your car in, call 832-845-4632 and he will pick up." data-es="Carlos te va a llamar al numero que dejaste. Si la puerta te tiene el carro encerrado, llama al 832-845-4632 y el contesta.">Carlos will call you back at the number you left. If the door is blocking your car in, call 832-845-4632 and he will pick up.</p>
+      <p class="privacy" style="margin-top:10px" data-en="Demo note: this form is a preview and does not send anywhere yet." data-es="Nota de demostracion: este formulario es una vista previa y todavia no envia nada.">Demo note: this form is a preview and does not send anywhere yet.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>Carlos Garage Door Services</b>
+      <p>Carlos Ontiveros</p>
+      <p><a href="tel:+18328454632">832-845-4632</a></p>
+      <p data-en="Houston and surrounding areas" data-es="Houston y areas cercanas">Houston and surrounding areas</p>
+    </div>
+    <div>
+      <b data-en="Se habla espanol" data-es="Se habla espanol">Se habla espanol</b>
+      <p data-en="Residential and commercial garage doors. Springs, openers, cables, tracks and new installations." data-es="Puertas de garaje residenciales y comerciales. Resortes, motores, cables, rieles e instalaciones nuevas.">Residential and commercial garage doors. Springs, openers, cables, tracks and new installations.</p>
+    </div>
+    <p class="fine">Demo preview built by Grand Nash Studio · Sample pricing · Not indexed</p>
+  </div>
+</footer>
+
+<nav class="bar" aria-label="Quick contact">
+  <a class="b1" href="tel:+18328454632" data-en="Call Carlos" data-es="Llamar a Carlos">Call Carlos</a>
+  <a class="b2" href="#triage" data-en="What is wrong?" data-es="&#191;Que pasa?">What is wrong?</a>
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"Carlos Garage Door Services",
+  "telephone":"+1-832-845-4632",
+  "areaServed":{"@type":"City","name":"Houston, TX"},
+  "address":{"@type":"PostalAddress","addressLocality":"Houston","addressRegion":"TX","addressCountry":"US"},
+  "knowsLanguage":["en","es"],
+  "description":"Garage door repair and installation in Houston and surrounding areas. Springs, openers, cables, tracks and new doors. Residential and commercial."
+}
+</script>
+
+<script>
+document.documentElement.classList.add('js');
+
+// language toggle
+(function(){
+  var btn=document.getElementById('lang'), es=false;
+  var nodes=document.querySelectorAll('[data-en]');
+  btn.addEventListener('click',function(){
+    es=!es;
+    nodes.forEach(function(n){
+      var v=n.getAttribute(es?'data-es':'data-en');
+      if(v!==null) n.innerHTML=v;
+    });
+    document.documentElement.lang= es?'es':'en';
+    btn.textContent= es?'EN':'ES';
+    btn.setAttribute('aria-label', es?'View in English':'Ver en espanol');
+  });
+})();
+
+// triage picker fills the request
+(function(){
+  var sel=document.getElementById('issue'), chip=document.getElementById('chip');
+  document.querySelectorAll('.tile').forEach(function(t){
+    t.addEventListener('click',function(){
+      var issue=t.getAttribute('data-issue');
+      for(var i=0;i<sel.options.length;i++){
+        if(sel.options[i].getAttribute('data-en')===issue||sel.options[i].text===issue){sel.selectedIndex=i;break;}
+      }
+      chip.textContent=(document.documentElement.lang==='es'?'Agregado: ':'Added: ')+t.querySelector('b').textContent;
+      chip.classList.add('on');
+      document.getElementById('request').scrollIntoView({behavior:'smooth'});
+      setTimeout(function(){document.getElementById('name').focus({preventScroll:true});},450);
+    });
+  });
+})();
+
+// front-end only confirmation
+(function(){
+  var f=document.getElementById('req'), ok=document.getElementById('ok');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=document.getElementById('name'), p=document.getElementById('phone');
+    if(!n.value.trim()){n.focus();return;}
+    if(!p.value.trim()){p.focus();return;}
+    f.style.display='none';
+    ok.classList.add('on');
+    ok.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+})();
+
+// roller travels the track with scroll
+(function(){
+  var r=document.getElementById('roller');
+  if(!r) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function move(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    var p=h>0?window.scrollY/h:0;
+    r.style.top=(p*(window.innerHeight-40)+20)+'px';
+  }
+  if(!reduce){window.addEventListener('scroll',move,{passive:true});move();}
+  else{r.style.top='20px';}
+})();
+</script>
+</body>
+</html>
