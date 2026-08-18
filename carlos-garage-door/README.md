@@ -2,9 +2,15 @@
 
 Unapproved demo built by Grand Nash Studio. Single self-contained `index.html`, no build step.
 
-Direction: galvanized steel ground, hazard-tag yellow accent, job-ticket two-column layout.
-The phone number is the hero and the primary button. Carlos's red is confined to the logo
-glyph and one hover state, so the page reads as his without red running the design.
+Direction: gallery style No. 12 Masculine, reinterpreted. Condensed uppercase (Oswald,
+inlined as base64 so the page makes zero external requests), galvanized steel ground with a
+brushed grain and soft door seams, hazard-tag yellow accent, and a consistent shallow angled
+cut taken from the curve where a garage door track turns. Carlos's red is confined to the
+logo glyph and one hover state.
+
+Section order is by urgency, not by marketing convention: the symptom triage opens the page,
+price is answered second, then who shows up, proof, work, and services last for the visitor
+who is browsing rather than locked out.
 
 Deploy: drag this folder into Netlify.
 
