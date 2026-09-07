@@ -1,0 +1,5 @@
+.env
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
+# playwright-cli local browser config (machine-specific paths)
+.playwright/
