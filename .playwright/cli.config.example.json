@@ -1,0 +1,10 @@
+{
+  "_comment": "Copy to .playwright/cli.config.json in a Claude Code cloud session. The CLI's bundled playwright-core wants a Chromium build it cannot download (cdn.playwright.dev is blocked by the egress policy), so point it at the image's pre-installed browser instead. Locally you do NOT need this file - playwright-cli fetches its own browser. Check the real path with: ls /opt/pw-browsers",
+  "browser": {
+    "browserName": "chromium",
+    "launchOptions": {
+      "executablePath": "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
+      "chromiumSandbox": false
+    }
+  }
+}
